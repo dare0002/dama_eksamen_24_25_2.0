@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <main className="">
-        <div>HEROOO</div>
+        <div> <Image></Image></div>
         <IndexBoxes />
         <Banner />
         <FAQ />

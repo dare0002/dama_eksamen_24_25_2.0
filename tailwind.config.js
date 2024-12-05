@@ -14,6 +14,7 @@ module.exports = {
         orange: "#E19E3B",
         pink: "#DE8B9C",
         offwhite: "#FFFBF4",
+        black: "#1B1B1B",
       },
     },
   },

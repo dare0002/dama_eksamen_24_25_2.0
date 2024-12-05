@@ -1,5 +1,7 @@
 const IndexBoxes = () => {
-    return (  );
+    return (
+        <div></div>
+      );
 }
  
 export default IndexBoxes;

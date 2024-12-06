@@ -6,10 +6,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
+  
       <main className="">
-        <div className="relative my-20 flex place-content-center">
+        <div className="relative my-20 flex place-content-center z-1">
           <div className="absolute -inset-12 text-center ">
+          
           <h1 className=" text-9xl font-bold ">
             REWU
             </h1> 
@@ -27,6 +28,6 @@ export default function Home() {
           <TicketCard />
         </div>
       </main>
-    </div>
+   
   );
 }

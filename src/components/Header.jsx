@@ -8,7 +8,7 @@ const Header = () => {
 
     return ( 
         <header className="sticky bg-black flex place-content-between p-5">
-           <Link href="/">REWU</Link>
+           <Link className="" href="/">REWU</Link>
             <nav className="bg-black flex items-end">
                 <div className="w-8 h-5 cursor-pointer m-4 bg-black" onClick={() => setIsMenuDisplayed(!isMenuDisplayed)}>
                 <div

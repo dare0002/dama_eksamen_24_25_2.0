@@ -14,8 +14,35 @@
   }
 } */
 
+@font-face {
+  font-family: "ClashGroteskSemi"; 
+  font-style: semibold;
+  font-weight: semibold;
+  src: url("fonts/ClashGrotesk-Semibold.woff");
+}
+@font-face {
+  font-family: "ClashGrotesk"; 
+  font-style: regular;
+  font-weight: regular;
+  src: url("fonts/ClashGrotesk-Regular.woff");
+}
+@font-face {
+  font-family: "ClashGroteskMedium"; 
+  font-style: medium;
+  font-weight: medium;
+  src: url("fonts/ClashGrotesk-Medium.woff");
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ClashGrotesk;
+}
+
+h1{
+  font-family: ClashGroteskSemi;
+}
+
+h2{
+  font-family: ClashGroteskMedium;
 }

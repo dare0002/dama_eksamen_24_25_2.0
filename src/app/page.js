@@ -2,6 +2,7 @@ import Banner from "@/components/Banner";
 import FAQ from "@/components/FAQ";
 import IndexBoxes from "@/components/IndexBoxes";
 import TicketCard from "@/components/TicketCard";
+import Button from "@/components/Button";
 import Image from "next/image";
 
 export default function Home() {
@@ -23,11 +24,21 @@ export default function Home() {
         <IndexBoxes />
         <Banner />
         <FAQ />
-        <div>
-          <TicketCard />
-          <TicketCard />
+        <div className="p-4 flex justify-center text-3xl">
+           <Button background={true}>Tickets.</Button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-3xl mx-auto px-4 py-12 justify-center items-center md:gap-6">
+            <TicketCard 
+            type="Regular"
+            price="799"
+            bgColor="bg-pink"
+          />
+            <TicketCard
+            type="VIP"
+            price="1299"
+            bgColor="bg-orange"
+          />
         </div>
       </main>
-   
   );
 }

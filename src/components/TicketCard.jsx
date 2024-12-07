@@ -1,40 +1,24 @@
 import Button from "./Button";
+import Image from "next/image";
 
-const TicketCard = () => {
+const TicketCard = ({ type, price, bgColor }) => {
     return ( 
-        <section className= "flex justify-center align-center content-center min-h-screen container mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-4 lg:gap-6">
-                <div className="bg-pink" >
-                    <div className="p-4">
-                        <h4>REGULAR</h4>
+                <div className= {`w-full text-center ${bgColor}`}>
+                    <div className="mt-10 p-4 text-2xl ">
+                        <h4>{type}</h4>
                     </div>
-                    <div className="p-4">
-                        <h4>799 DKK</h4>
+                    <div className="p-4 text-xl">
+                        <h4>{price} DKK</h4>
                     </div>
-                    <div className="p-4">
+                    <div className="mt-10 p-4 flex justify-center">
                         <Button background={true}>BUY</Button>
                     </div>
-                    <div className="mt-2">
-                        {/* IMAGE */}
+                    <div className="mt-10 px-6 p-4 bg-offwhite w-full">
+                        <Image src="/barcode1.svg" alt="Barcode image"
+                        width={2000}
+                        height={2000}/>
                     </div>
                 </div>
-                <div className="bg-orange">
-                    <div className="p-4">
-                        <h4>VIP</h4>
-                    </div>
-                    <div className="p-4">
-                        <h4>1299 DKK</h4>
-                    </div>
-                    <div className="p-4">
-                        <Button background={true}>BUY</Button>
-                    </div>
-                    <div className="mt-2">
-                        {/* IMAGE */}
-                    </div>
-                </div>
-            </div>
-
-        </section>
      );
 }
  

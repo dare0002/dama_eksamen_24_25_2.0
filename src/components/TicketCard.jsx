@@ -12,7 +12,7 @@ const TicketCard = ({ type, price, bgColor, link }) => {
                         <h4>{price} DKK</h4>
                     </div>
                     <div className="mt-10 p-4 flex justify-center">
-                        <Link href={link}>
+                        <Link href={link || "/"}>
                             <Button background={true}>BUY</Button>
                         </Link>
                     </div>

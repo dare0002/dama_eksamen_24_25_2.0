@@ -27,7 +27,7 @@ export default function Home() {
         <Banner />
         <FAQ />
         <div className="p-4 flex justify-center text-3xl">
-          <Link href="../Tickets">
+          <Link href="/Tickets">
            <Button background={true}>Tickets.</Button>
            </Link>
         </div>

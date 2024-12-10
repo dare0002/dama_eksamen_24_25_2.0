@@ -1,7 +1,23 @@
+import Newsletter from "./Newsletter";
+
 const Footer = () => {
-    return (
-        <div></div>
-      );
-}
- 
+  return (
+    <footer className="flex">
+      <Newsletter />
+      <div>
+        <article>
+          <h3>Contact us.</h3>
+          <p>+45 46 46 00 00</p>
+          <p>kea@kea.dk</p>
+        </article>
+        <article>
+          <h3>Find us.</h3>
+          <p>Guldbergsgade 29N</p>
+          <p>2200 København</p>
+        </article>
+      </div>
+    </footer>
+  );
+};
+
 export default Footer;

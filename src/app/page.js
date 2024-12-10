@@ -15,13 +15,13 @@ export default function Home() {
           <div className="absolute -inset-36 text-center ">
           
           <h1 className=" text-4xl font-bold ">
-            REWU
+            FOOFEST
             </h1> 
             <h3 className="text-3xl">7-DAY FESTIVAL</h3>
           </div>
           <Image src="/hero.png"  
-        width={800}
-        height={500}
+        width={1000}
+        height={800}
         alt="abstract image in orange and pink"/></div>
         <IndexBoxes />
         <Banner />

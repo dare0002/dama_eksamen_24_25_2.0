@@ -14,6 +14,7 @@ function Newsletter() {
       className="max-w-md mx-auto p-4 bg-inherit border border-offwhite"
     >
       <div className="mb-4">
+        <h2 className="text-5xl">Newsletter.</h2>
         <label htmlFor="name" className="block text-offwhite font-bold mb-2">
           Name
         </label>

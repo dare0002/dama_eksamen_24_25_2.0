@@ -2,18 +2,28 @@ const endpoint = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 async function apiFetch(url, options = {}) {
-  try {
-    const response = await fetch(url, options);
-    console.log("Raw response:", response);
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`API error: ${errorData.message || "Unknown error"}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error during fetch:", error);
-    return { error: error.message };
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`API error: ${errorData.message || "Unknown error"}`);
   }
+  return await response.json();
+}
+
+export async function getBands() {
+  const response = await fetch("http://localhost:8080/schedule");
+  const data = await response.json();
+
+  const bands = [];
+
+  // Brug forEach til at gennemgå hver location og dag, og flad dataene ud
+  Object.keys(data).forEach((location) => {
+    Object.keys(data[location]).forEach((day) => {
+      bands.push(...data[location][day]); // Tilføj alle bands fra denne dag til arrayet
+    });
+  });
+
+  return bands;
 }
 
 export async function getData() {

@@ -7,7 +7,7 @@ function SubmitButton() {
     <button
       disabled={pending}
       type="submit"
-      className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+      className="w-full bg-inherit text-offwhite py-2 px-4 hover:bg-orange border border-solid border-offwhite"
     >
       {pending ? "Submitting..." : "Submit"}
     </button>

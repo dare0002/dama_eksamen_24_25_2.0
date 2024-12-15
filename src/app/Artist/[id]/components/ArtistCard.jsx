@@ -4,13 +4,13 @@ const ArtistCard = () => {
   return (
     <section className="grid grid-cols-6 border border-solid mx-20">
       <div className="col-start-1 col-span-2 border border-solid border-offwhite">
-        <h2>{band.name}</h2>
+        <h2>naaavn</h2>
       </div>
       <div className="col-start-3 col-span-3 row-start-1 row-span-3 border border-solid border-offwhite">
         <Image src="/image8.png" width={400} height={400} alt="led zeppelin" />
       </div>
       <div className="col-start-1 col-span-2 border border-solid border-offwhite">
-        <p>{band.bio}</p>
+        <p>biooo</p>
       </div>
       <div className="row-start-4 border border-solid border-offwhite">
         <h3>Members.</h3>

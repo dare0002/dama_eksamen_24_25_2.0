@@ -1,39 +1,25 @@
-"use client";
+"use server";
+import BandsSchedule from "./components/BandsSchedule";
 
-import { useEffect, useState } from "react";
-import { getBands } from "@/lib/api";
-import Link from "next/link";
+export async function getBands() {
+  const response = await fetch("http://localhost:8080/schedule");
+
+  const data = await response.json();
+
+  const bands = [];
+  Object.keys(data).forEach((location) => {
+    Object.keys(data[location]).forEach((day) => {
+      bands.push(...data[location][day]);
+    });
+  });
+
+  return bands;
+}
 
 const LineUp = () => {
-  const [bands, setBands] = useState([]);
-
-  useEffect(() => {
-    const fetchBands = async () => {
-      const data = await getBands();
-      const bandsWithId = data.map((band) => ({
-        ...band,
-        id: crypto.randomUUID(),
-        slug: band.name.toLowerCase().replace(/ /g, "-"),
-      }));
-      setBands(bandsWithId);
-    };
-
-    fetchBands();
-  }, []);
-
   return (
     <div>
-      {bands.map((band) => (
-        <div key={band.id}>
-          {/* Bruger slug som del af URL'en */}
-          <Link href={`/artist/${band.slug}`}>
-            <h3>{band.act}</h3>
-            <p>
-              {band.start} - {band.end}
-            </p>
-          </Link>
-        </div>
-      ))}
+      <BandsSchedule getBands={getBands} />
     </div>
   );
 };

@@ -1,39 +1,26 @@
-"use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const BandsSchedule = ({ getBands }) => {
-  const [bands, setBands] = useState([]);
-
-  useEffect(() => {
-    const fetchBands = async () => {
-      const data = await getBands();
-      const bandsWithId = data.map((band) => ({
-        ...band,
-        id: crypto.randomUUID(),
-      }));
-      setBands(bandsWithId);
-    };
-
-    fetchBands();
-  }, []);
-
+const BandsSchedule = ({ day, bands }) => {
   return (
-    <div>
-      {bands.length === 0 ? (
-        <p>No bands available</p>
-      ) : (
-        bands.map((band) => (
-          <div key={band.id}>
-            <Link href={`/Artist/${band.id}`}>
-              <h3>{band.act}</h3>
-              <p>
-                {band.start} - {band.end}
-              </p>
+    <div className="flex flex-col place-content-center">
+      <h3 className="text-lg">{day}</h3>
+
+      <ul>
+        {bands.map((band, index) => {
+          const bandName = band.act.toLowerCase().replace(/\s+/g, "-"); // URL-venligt format
+
+          return (
+            <Link href={`/Artist/${bandName}`}>
+              <li
+                key={bandName}
+                className={index < 3 ? "font-bold" : "w-800px flex"}
+              >
+                {band.act}
+              </li>
             </Link>
-          </div>
-        ))
-      )}
+          );
+        })}
+      </ul>
     </div>
   );
 };

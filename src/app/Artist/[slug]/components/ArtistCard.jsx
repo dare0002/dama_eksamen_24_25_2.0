@@ -1,26 +1,32 @@
 import Image from "next/image";
 
-const ArtistCard = () => {
+const ArtistCard = ({ band }) => {
   return (
     <section className="grid grid-cols-6 border border-solid mx-20">
       <div className="col-start-1 col-span-2 border border-solid border-offwhite">
-        <h2>naaavn</h2>
+        <h2>{band.name}</h2>
       </div>
       <div className="col-start-3 col-span-3 row-start-1 row-span-3 border border-solid border-offwhite">
-        <Image src="/image8.png" width={400} height={400} alt="led zeppelin" />
+        <Image
+          src={
+            band.logo.startsWith("https://")
+              ? band.logo
+              : `http://localhost:8080/logos/${band.logo}`
+          }
+          width={400}
+          height={400}
+          alt="led zeppelin"
+        />
       </div>
       <div className="col-start-1 col-span-2 border border-solid border-offwhite">
-        <p>biooo</p>
+        <p>{band.bio}</p>
       </div>
       <div className="row-start-4 border border-solid border-offwhite">
         <h3>Members.</h3>
         <h4>
-          Jimmy Page <br />
-          Robert Plant
-        </h4>
-        <h4>
-          John Bonham <br />
-          John Paul Jones
+          {band.members.map((member, i) => (
+            <span key={i}>{member}</span>
+          ))}
         </h4>
       </div>
       <div className="col-start-3 col-span-1 border border-solid border-offwhite">
@@ -39,7 +45,7 @@ const ArtistCard = () => {
         <h4>GENRE.</h4>
       </div>
       <div className="col-start-2 col-span-2 border border-solid border-offwhite">
-        <h4>ROCK</h4>
+        <h4>{band.genre}</h4>
       </div>
       <div className="bg-orange col-start-3 col-span-2 row-start-6 row-span-2 border border-solid border-offwhite">
         <button>BUY TICKETS.</button>

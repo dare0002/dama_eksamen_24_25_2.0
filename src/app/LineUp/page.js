@@ -1,77 +1,42 @@
-"use server";
-import BandsSchedule from "./components/BandsSchedule";
+import SceneSchedule from "./components/SceneSchedule";
 
-async function getBands(day) {
+const Lineup = async () => {
   const response = await fetch("http://localhost:8080/schedule");
   const data = await response.json();
 
-  const dayBands = [];
+  // Funktion til at hente bands for alle dage (mon, tue, wed, etc.)
+  const getScheduleForAllDays = (sceneData) => {
+    const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-  // Gennemgå data og find bands for den ønskede dag
-  Object.keys(data).forEach((location) => {
-    if (data[location][day]) {
-      const filteredBands = data[location][day].filter(
-        (band) => band.act !== "break"
-      );
-      dayBands.push(...filteredBands);
-    }
-  });
+    return daysOfWeek.map((day) => {
+      const bands =
+        sceneData?.[day]?.filter((band) => band.act !== "break") || [];
+      return { day, bands }; // Returner et objekt med dag og tilhørende bands
+    });
+  };
 
-  return dayBands;
-}
+  const midgardSchedule = getScheduleForAllDays(data.Midgard);
+  const vanaheimSchedule = getScheduleForAllDays(data.Vanaheim);
+  const jotunheimSchedule = getScheduleForAllDays(data.Jotunheim);
 
-// Komponent for Mandag
-const MondaySchedule = async () => {
-  const mondayBands = await getBands("mon");
-  return <BandsSchedule day="Monday" bands={mondayBands} />;
-};
-
-// Komponent for Tirsdag
-const TuesdaySchedule = async () => {
-  const tuesdayBands = await getBands("tue");
-  return <BandsSchedule day="Tuesday" bands={tuesdayBands} />;
-};
-
-// Komponent for Onsdag
-const WednesdaySchedule = async () => {
-  const wednesdayBands = await getBands("wed");
-  return <BandsSchedule day="Wednesday" bands={wednesdayBands} />;
-};
-
-// Komponent for Torsdag
-const ThursdaySchedule = async () => {
-  const thursdayBands = await getBands("thu");
-  return <BandsSchedule day="Thursday" bands={thursdayBands} />;
-};
-// Komponent for Fredag
-const FridaySchedule = async () => {
-  const fridayBands = await getBands("fri");
-  return <BandsSchedule day="Friday" bands={fridayBands} />;
-};
-// Komponent for Lørdag
-const SaturdaySchedule = async () => {
-  const saturdayBands = await getBands("sat");
-  return <BandsSchedule day="Saturday" bands={saturdayBands} />;
-};
-// Komponent for Søndag
-const SundaySchedule = async () => {
-  const sundayBands = await getBands("sun");
-  return <BandsSchedule day="Sunday" bands={sundayBands} />;
-};
-
-const LineUp = () => {
   return (
-    <div>
-      <h2 className="text-2xl">PROGRAM.</h2>
-      <MondaySchedule />
-      <TuesdaySchedule />
-      <WednesdaySchedule />
-      <ThursdaySchedule />
-      <FridaySchedule />
-      <SaturdaySchedule />
-      <SundaySchedule />
+    <div className="flex flex-col place-content-center p-8">
+      <h2 className="text-3xl font-bold mb-4 ">Festival Lineup</h2>
+      <div className=" flex flex-col gap-y-6 ">
+        <div className="px-7 sm:px-12 md:px-24 lg:px-48 ">
+          <SceneSchedule sceneSchedule={midgardSchedule} scene="Midgard" />
+        </div>
+
+        <div className="px-7 sm:px-12 md:px-24 lg:px-48 ">
+          <SceneSchedule sceneSchedule={vanaheimSchedule} scene="Vanaheim" />
+        </div>
+
+        <div className="px-7 sm:px-12 md:px-24 lg:px-48 ">
+          <SceneSchedule sceneSchedule={jotunheimSchedule} scene="Jotunheim" />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default LineUp;
+export default Lineup;

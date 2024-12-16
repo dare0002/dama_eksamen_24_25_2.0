@@ -1,41 +1,105 @@
-"use client"
+"use client";
+import { motion, MotionConfig } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
-
 const Header = () => {
-    const [isMenuDisplayed, setIsMenuDisplayed] = useState(false);
+  const [active, setActive] = useState(false);
 
-    return ( 
-        <header className="sticky bg-black flex place-content-between p-5">
-           <Link className="" href="/">REWU</Link>
-            <nav className="bg-black flex items-end">
-                <div className="w-8 h-5 cursor-pointer m-4 bg-black" onClick={() => setIsMenuDisplayed(!isMenuDisplayed)}>
-                <div
-            className={`w-full h-0.5 bg-offwhite transition-all duration-200 ease-linear transfrom ${
-              isMenuDisplayed ? "rotate-45  translate-y-0.5" : "mb-1.5"
-            }`}
-          ></div>
-          <div
-            className={`w-full h-0.5 bg-offwhite  transition-all duration-150 ease-linear ${
-              isMenuDisplayed ? "opacity-0 " : "opacity-100 mb-1.5"
-            }`}
-          ></div>
-          <div
-            className={`w-full h-0.5 bg-offwhite  transition-all duration-200 ease-linear transform ${
-              isMenuDisplayed ? "-rotate-45 translate-y--0.5 " : "mb-1.5"
-            }`}
-          ></div>
-                </div>
-                {isMenuDisplayed && (
-                <ul className="flex flex-col items-end absolute top-full left-0 z-100 min-h-screen w-screen p-5 bg-black text-3xl">
-                    <li> <Link href="/">Home.</Link></li>
-                    <li> <Link href="/LineUp">Line Up.</Link></li>
-                </ul>
-                )}
-            </nav>
-        </header>
-     );
-}
- 
+  return (
+    <header className="sticky bg-black flex place-content-between p-5 z-50">
+      <Link className="" href="/">
+        REWU
+      </Link>
+      <nav className="bg-black flex items-end">
+        <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>
+          <motion.button
+            initial={false}
+            onClick={() => setActive((prev) => !prev)}
+            className="relative  h-20 w-20"
+            animate={active ? "open" : "closed"}
+          >
+            <motion.span
+              style={{
+                left: "50%",
+                top: "35%",
+                x: "-50%",
+                y: "-50%",
+              }}
+              className="absolute h-0.5 w-10 bg-offwhite"
+              variants={{
+                open: {
+                  rotate: ["0deg", "0deg", "45deg"],
+                  top: ["35%", "50%", "50%"],
+                },
+                closed: {
+                  rotate: ["45deg", "0deg", "0deg"],
+                  top: ["50%", "50%", "35%"],
+                },
+              }}
+            />
+            <motion.span
+              style={{
+                left: "50%",
+                top: "50%",
+                x: "-50%",
+                y: "-50%",
+              }}
+              className="absolute h-0.5 w-10 bg-offwhite"
+              variants={{
+                open: {
+                  rotate: ["0deg", "0deg", "-45deg"],
+                },
+                closed: {
+                  rotate: ["-45deg", "0deg", "0deg"],
+                },
+              }}
+            />
+            <motion.span
+              style={{
+                left: "50%",
+                bottom: "35%",
+                x: "-50%",
+                y: "50%",
+              }}
+              className="absolute h-0.5 w-10 bg-offwhite"
+              variants={{
+                open: {
+                  rotate: ["0deg", "0deg", "45deg"],
+                  bottom: ["35%", "50%", "50%"],
+                },
+                closed: {
+                  rotate: ["45deg", "0deg", "0deg"],
+                  bottom: ["50%", "50%", "35%"],
+                },
+              }}
+            />
+          </motion.button>
+        </MotionConfig>
+
+        {active && (
+          <ul className="flex flex-col items-end absolute top-full left-0 z-100 min-h-screen w-screen p-5 bg-black text-3xl">
+            <li>
+              <Link
+                href="/"
+                onClick={() => setActive(false)} // Lukker menuen, når linket klikkes
+              >
+                Home.
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/LineUp"
+                onClick={() => setActive(false)} // Lukker menuen, når linket klikkes
+              >
+                Line Up.
+              </Link>
+            </li>
+          </ul>
+        )}
+      </nav>
+    </header>
+  );
+};
+
 export default Header;

@@ -11,7 +11,7 @@ function Newsletter() {
     <form
       action={formAction}
       noValidate
-      className="max-w-md mx-auto p-4 bg-inherit border border-offwhite"
+      className="mx-auto w-auto sm:w-full  p-4 bg-inherit border border-s-offwhite"
     >
       <div className="mb-4">
         <h2 className="text-5xl">Newsletter.</h2>

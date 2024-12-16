@@ -1,6 +1,6 @@
 "use server";
 
-import { getData, addData } from "@/lib/api";
+import { getData, postData } from "@/lib/api";
 import { revalidatePath } from "next/cache";
 
 export async function actionSubmit(prev, formData) {
@@ -40,7 +40,7 @@ export async function actionSubmit(prev, formData) {
     };
   }
 
-  const res = await addData(data);
+  const res = await postData(data);
 
   if (res) {
     revalidatePath("/");

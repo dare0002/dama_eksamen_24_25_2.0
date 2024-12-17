@@ -1,11 +1,11 @@
 "use client"
 
-import { actionSubmit } from "@/actions";
+import { actionSubmitForm } from "@/actionSubmitForm";
 import Button from "@/components/Button";
 import { useActionState } from "react";
 
 function Information () {
-    const [state, formAction] = useActionState(actionSubmit);
+    const [state, formAction] = useActionState(actionSubmitForm);
 
     return ( 
             <form action={formAction} noValidate className="mb-8" >

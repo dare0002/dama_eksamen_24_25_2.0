@@ -1,6 +1,6 @@
 "use server";
 
-import { getData, addData } from "./apiforms";
+import { getData, addData } from "@/lib/apiforms";
 import { revalidatePath } from "next/cache";
 
 export async function actionSubmitForm(prev, formData) {

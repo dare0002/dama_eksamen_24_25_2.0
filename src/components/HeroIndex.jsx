@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 const HeroIndex = () => {
   return (
     <div className="w-full text-offwhite z-0 flex place-content-center">
@@ -7,7 +8,7 @@ const HeroIndex = () => {
         <h3 className="text-2xl">7-DAY FESTIVAL</h3>
       </div>
       <Image
-        src="/hero.png"
+        src="/heroimg.svg"
         width={1000}
         height={800}
         alt="abstract image in orange and pink"

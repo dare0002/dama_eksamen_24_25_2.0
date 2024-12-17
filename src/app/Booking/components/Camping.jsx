@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getAvailableSpots, reserveSpot, fulfillReservation } from "@/lib/api";
+import { getAvailableSpots, reserveSpot, fulfillReservation } from "@/lib/apiforms";
 import Button from "@/components/Button";
 
 

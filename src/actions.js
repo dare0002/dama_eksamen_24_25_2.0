@@ -15,7 +15,9 @@ export async function actionSubmit(prev, formData) {
   if (!data.name) {
     errors.name = "Name is required";
   }
+  console.log("NAME", data.name)
   if (data.name.length === 1) {
+
     errors.name = "Does your name really have only one character?";
   }
   if (!data.email || !data.email.includes("@")) {

@@ -5,7 +5,7 @@ import AccordionItem from "./AccordionItem"
 import { Bs1Circle } from "react-icons/bs";
 import { Bs2Circle } from "react-icons/bs";
 import { Bs3Circle } from "react-icons/bs";
-import Camping from "./Camping";
+
 
 const Accordion = () => {
     const [isOpen, setIsOpen] = useState (0);

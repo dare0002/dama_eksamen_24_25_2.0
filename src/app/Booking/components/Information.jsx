@@ -16,7 +16,7 @@ function Information () {
                         <label htmlFor="full-name" className="font-bold text-black">Full name</label>
                         <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="full-name"
-                        name="full-name"
+                        name="name"
                         type="text"
                         autoComplete="name"
                         spellCheck="false"
@@ -68,7 +68,7 @@ function Information () {
                         </label> 
                         <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-line-1"
-                        name="address-line1"
+                        name="addressLine1"
                         type="text"
                         autoComplete="address-line1"
                         required/>
@@ -83,7 +83,7 @@ function Information () {
                         </label>
                         <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-line-2"
-                        name="address-line2"
+                        name="addressLine2"
                         type="text"
                         autoComplete="address-line2"
                         required />
@@ -96,7 +96,7 @@ function Information () {
                         <label htmlFor="address-town" className="font-bold text-gray-800">Town or city</label>
                         <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-town"
-                        name="address-town"
+                        name="addressTown"
                         type="text"
                         autoComplete="address-level2"
                         required />
@@ -109,7 +109,7 @@ function Information () {
                         <label htmlFor="postal-code" className="font-bold text-gray-800">Zip code</label>
                         <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-postcode"
-                        name="address-postcode"
+                        name="addressPostcode"
                         type="text"
                         autoComplete="postal-code"
                         required />

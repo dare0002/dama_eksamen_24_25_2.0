@@ -18,5 +18,3 @@ const SceneSchedule = ({ sceneSchedule, scene }) => {
   );
 };
 export default SceneSchedule;
-
-// export default SceneSchedule;

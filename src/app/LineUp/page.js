@@ -1,7 +1,9 @@
 import SceneSchedule from "./components/SceneSchedule";
 
 const Lineup = async () => {
-  const response = await fetch("http://localhost:8080/schedule");
+  const response = await fetch(
+    "https://kindly-elegant-fork.glitch.me/schedule"
+  );
   const data = await response.json();
 
   // Funktion til at hente bands for alle dage (mon, tue, wed, etc.)

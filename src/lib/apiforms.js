@@ -3,11 +3,11 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_bookingform;
 
 async function apiFetch(url, options = {}) {
   const response = await fetch(url, options);
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(`API error: ${errorData.message || "Unknown error"}`);
-  }
-  return await response.json();
+  // if (!response.ok) {
+  //   const errorData = await response.json();
+  //   throw new Error(`API error: ${errorData.message || "Unknown error"}`);
+  // }
+  return response.json();
 }
 
 export async function getData() {
@@ -25,6 +25,7 @@ export async function getData() {
 }
 
 export async function addData(data) {
+  console.log("Data sent to Supabase:", data);
   return apiFetch(endpoint, {
     method: "POST",
     headers: {

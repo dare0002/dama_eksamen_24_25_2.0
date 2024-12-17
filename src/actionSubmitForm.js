@@ -5,13 +5,13 @@ import { revalidatePath } from "next/cache";
 
 export async function actionSubmitForm(prev, formData) {
   const data = {
-    name: formData.get("full-name"),
+    name: formData.get("name"),
     email: formData.get("email"),
     telephone: formData.get("telephone"),
-    addressLine1:formData.get("address-line1"),
-    addressLine2:formData.get("address-line2"),
-    addressTown:formData.get("address-town"), 
-    addressPostcode:formData.get("address-postcode"),
+    addressLine1:formData.get("addressLine1"),
+    addressLine2:formData.get("addressLine2"),
+    addressTown:formData.get("addressTown"), 
+    addressPostcode:formData.get("addressPostcode"),
   };
 
 //   NAME LENGTH IS MISSING

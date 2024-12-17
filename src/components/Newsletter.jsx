@@ -47,7 +47,7 @@ function Newsletter() {
         </p>
       </div>
       <SubmitButton />
-      {/* Log serverens svar */}
+
       <p>{state?.message}</p>
       {state?.errors && <pre>{JSON.stringify(state.errors, null, 2)}</pre>}
     </form>

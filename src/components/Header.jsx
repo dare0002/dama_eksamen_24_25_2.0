@@ -7,9 +7,9 @@ const Header = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <header className="sticky bg-black flex place-content-between p-5 z-50">
-      <Link className="" href="/">
-        REWU
+    <header className="sticky bg-black flex place-content-between place-items-center p-5 z-50">
+      <Link href="/">
+        <h2 className="font-bold text"> FOOFEST </h2>
       </Link>
       <nav className="bg-black flex items-end">
         <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>

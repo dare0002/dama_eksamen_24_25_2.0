@@ -4,26 +4,22 @@ import { getData, postData } from "@/lib/api";
 import { revalidatePath } from "next/cache";
 
 export async function actionSubmit(prev, formData) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const data = {
     email: formData.get("email"),
     name: formData.get("name"),
   };
   const errors = {};
-
   if (!data.name) {
     errors.name = "Name is required";
   }
-  console.log("NAME", data.name)
   if (data.name.length === 1) {
-
     errors.name = "Does your name really have only one character?";
   }
   if (!data.email || !data.email.includes("@")) {
     errors.email = "Email is required";
   }
-
   if (errors.name || errors.email) {
     return { success: false, errors, name: data.name, email: data.email };
   }
@@ -36,7 +32,7 @@ export async function actionSubmit(prev, formData) {
   if (existingEmail) {
     return {
       success: false,
-      errors: { email: "Denne e-mailadresse er allerede tilmeldt" },
+      errors: { email: "Email already exists" },
       name: data.name,
       email: data.email,
     };

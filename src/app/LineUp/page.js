@@ -1,6 +1,9 @@
 import SceneSchedule from "./components/SceneSchedule";
 
 const Lineup = async () => {
+  // const response = await fetch("https://localhost:8080/schedule");
+  // const data = await response.json();
+
   const response = await fetch(
     "https://kindly-elegant-fork.glitch.me/schedule"
   );

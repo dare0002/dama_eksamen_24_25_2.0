@@ -41,7 +41,8 @@ const AccordionItem = ({isOpen, setIsOpen, item, step, text, answer, campingData
                     <Amount type="VIP"/>
                 </>
             )}
-            {item === 2 && campingData && <Camping campingData= {campingData}/>}
+            {item === 2 && <Camping />}
+            {/* {item === 2 && campingData && <Camping campingData= {campingData}/>} */}
             {item === 3 && <Information /> }
 
 

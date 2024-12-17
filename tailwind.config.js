@@ -15,7 +15,7 @@ module.exports = {
         pink: "#DE8B9C",
         offwhite: "#FFFBF4",
         black: "#1B1B1B",
-        gray: "212121",
+        gray: "#f5f5f5",
 
       }, 
       

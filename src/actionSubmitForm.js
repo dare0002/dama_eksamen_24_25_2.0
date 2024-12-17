@@ -1,6 +1,6 @@
 "use server";
 
-import { getData, addData } from "@/lib/apiforms";
+import { getData, postData } from "@/lib/apiforms";
 import { revalidatePath } from "next/cache";
 
 export async function actionSubmitForm(prev, formData) {
@@ -34,12 +34,20 @@ export async function actionSubmitForm(prev, formData) {
   const existingEntry = existingData.find((entry) => entry.email === data.email);
 
   if (existingEntry) {
-    return { success: false, errors: { email: "Email already exists" } };
-  }
+    return { success: false, errors: { email: "Email already exists"},
+      name: data.name,
+      email: data.email,
+      telephone: data.telephone,
+      addressLine1: data.addressLine1, 
+      addressLine2: data.addressLine2, 
+      addressTown: data.addressTown, 
+      addressPostcode: data.addressPostcode
+    } };
+ 
 
 //   Skickas vidare till databas i supabase där information lagras
 
-  const result = await addData(data);
+  const result = await postData(data);
 
   if (result) {
     revalidatePath("/");
@@ -47,5 +55,5 @@ export async function actionSubmitForm(prev, formData) {
   }
   
   return { success: false, message: "Submission failed." };
-}
 
+}

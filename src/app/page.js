@@ -24,16 +24,18 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-3xl mx-auto px-4 py-12 justify-center items-center md:gap-6">
           <TicketCard
-            type="Regular"
-            price="799"
-            bgColor="bg-pink"
-            link="/Tickets"
+            // type="Regular"
+            // price="799"
+            // bgColor="bg-pink"
+            // link="/Tickets"
+            ticketImg="/TickReg.svg"
           />
           <TicketCard
-            type="VIP"
-            price="1299"
-            bgColor="bg-orange"
-            link="/Tickets"
+            // type="VIP"
+            // price="1299"
+            // bgColor="bg-orange"
+            // link="/Tickets"
+            ticketImg="/TickVip.svg"
           />
         </div>
       </main>

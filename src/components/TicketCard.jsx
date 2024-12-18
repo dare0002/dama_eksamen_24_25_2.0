@@ -1,28 +1,22 @@
 import Link from "next/link";
 import Button from "./Button";
 import Image from "next/image";
+import { motion } from "motion/react";
 
-const TicketCard = ({ type, price, bgColor, link }) => {
-    return ( 
-                <div className= {`w-full text-center ${bgColor}`}>
-                    <div className="mt-10 p-4 text-2xl ">
-                        <h4>{type}</h4>
-                    </div>
-                    <div className="p-4 text-xl">
-                        <h4>{price} DKK</h4>
-                    </div>
-                    <div className="mt-10 p-4 flex justify-center">
-                        <Link href={link || "/"}>
-                            <Button background={true}>BUY</Button>
-                        </Link>
-                    </div>
-                    <div className="mt-10 px-6 p-4 bg-offwhite w-full">
-                        <Image src="/barcode1.svg" alt="Barcode image"
-                            width={2000}
-                            height={2000}/>
-                    </div>
-                </div>
-     );
-}
- 
+const TicketCard = ({ ticketImg }) => {
+  return (
+    <div className="w-full text-center relative">
+      <Image
+        src={ticketImg}
+        width={600}
+        height={200}
+        alt="poster for graphic element for lineup"
+      />
+      <button className="absolute px-6 py-3 left-1/2 bottom-1/3 transform -translate-x-1/2 -translate-y-1/2 bg-offwhite/0 hover:bg-offwhite border border-offwhite text-black">
+        <span>BUY</span>
+      </button>
+    </div>
+  );
+};
+
 export default TicketCard;

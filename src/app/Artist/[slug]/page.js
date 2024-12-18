@@ -17,7 +17,7 @@ const Artist = async ({ params }) => {
           <FaArrowLeft />
           <h5> Back to Lineup</h5>
         </Link>
-        <ArtistCard band={band} />;
+        <ArtistCard band={band} />
       </div>
     </>
   );

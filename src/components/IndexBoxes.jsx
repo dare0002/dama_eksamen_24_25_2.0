@@ -20,21 +20,18 @@ const IndexBoxes = () => {
             className="flex gap-4 place-items-center text-lg"
             whileHover={{ scale: 1.1 }}
           >
-            <motion.h3 className="text-2xl font-semibold">TICKETS.</motion.h3>
+            <motion.h3 className="text-base sm:text-2xl font-semibold">
+              TICKETS.
+            </motion.h3>
             <FaArrowRight />
           </motion.div>
         </Link>
       </div>
       <div className="w-1/3 aspect-square border border-offwhite flex flex-col gap-8 place-content-center place-items-center">
-        <h3 className="text-2xl font-semibold">JOIN US.</h3>
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-base sm:text-2xl font-semibold">JOIN US.</h3>
+        <h3 className="text-base sm:text-2xl font-semibold">
           5 JUNE 2025 <br /> COPENHAGEN
         </h3>
-        {/* <Link href="/Tickets">
-          <motion.button className="border border-offwhite py-2 px-6 w-fit bg-orange/0 transition-colors hover:bg-orange">
-            <span className="text-xl font-semibold">TICKETS</span>
-          </motion.button>
-        </Link> */}
       </div>
       <div className="w-1/3 aspect-square border border-offwhite flex flex-col gap-8 place-content-center place-items-center">
         <Image
@@ -48,7 +45,7 @@ const IndexBoxes = () => {
             className="flex gap-4 place-items-center text-lg"
             whileHover={{ scale: 1.1 }}
           >
-            <h3 className="text-2xl font-semibold">LINE UP.</h3>
+            <h3 className="text-base sm:text-2xl font-semibold">LINE UP.</h3>
             <FaArrowRight />
           </motion.div>
         </Link>

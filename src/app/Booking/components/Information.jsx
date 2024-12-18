@@ -1,20 +1,20 @@
 "use client"
 
 import { actionSubmitForm } from "@/actionSubmitForm";
-import Button from "@/components/Button";
+import Button from "./Button";
 import { useActionState } from "react";
 
 function Information () {
     const [state, formAction] = useActionState(actionSubmitForm);
 
     return ( 
-            <form action={formAction} noValidate className="mb-8" >
+            <form action={formAction} noValidate className="max-w-2xl mx-auto p-6 bg-offwhite rounded-lg shadow-md" >
                 <fieldset className="border-0 p-0 my-8 text-left">
-                    <legend className="text-xl font-semibold mb-4">Personal information</legend>
+                    <legend className="text-xl font-semibold mb-4 text-gray-800">Personal information</legend>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="full-name" className="font-bold text-black">Full name</label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <label htmlFor="full-name" className="text-black">Full name*</label>
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="full-name"
                         name="name"
                         type="text"
@@ -28,10 +28,10 @@ function Information () {
                     </div>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="email" className="font-bold text-gray-800">Email address
+                        <label htmlFor="email" className="text-gray-800">Email address*
                         <span className="text-sm text-gray-500 block">We will only use this to send you a receipt</span>
                         </label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="email"
                         name="email"
                         type="email"
@@ -46,8 +46,8 @@ function Information () {
                     </div>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="telephone-number" className="font-bold text-gray-800">Phone number</label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <label htmlFor="telephone-number" className="text-gray-800">Phone number*</label>
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="telephone"
                         name="telephone"
                         type="tel"
@@ -63,10 +63,10 @@ function Information () {
                     <legend className="text-xl font-semibold mb-4">What is your address?</legend>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="address-line-1" className="font-bold text-gray-800">Building and street 
+                        <label htmlFor="address-line-1" className="text-gray-800">Building and street*
                             <span className="visually-hidden"></span>
                         </label> 
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-line-1"
                         name="addressLine1"
                         type="text"
@@ -79,9 +79,9 @@ function Information () {
 
                     <div className="form group grid gap-2 mb-6">
                         <label htmlFor="address-line-2" className="visually-hidden">
-                            <span className="visually-hidden">Addtional street information (optional)</span>
+                            <span className="visually-hidden">Address line 2 (optional)</span>
                         </label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-line-2"
                         name="addressLine2"
                         type="text"
@@ -93,8 +93,8 @@ function Information () {
                     </div>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="address-town" className="font-bold text-gray-800">Town or city</label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <label htmlFor="address-town" className="text-gray-800">Town or city*</label>
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-town"
                         name="addressTown"
                         type="text"
@@ -106,8 +106,8 @@ function Information () {
                     </div>
 
                     <div className="form group grid gap-2 mb-6">
-                        <label htmlFor="postal-code" className="font-bold text-gray-800">Zip code</label>
-                        <input className="border border-gray-300 bg-gray p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
+                        <label htmlFor="postal-code" className="text-gray-800">Zip code*</label>
+                        <input className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                         id="address-postcode"
                         name="addressPostcode"
                         type="text"
@@ -118,7 +118,7 @@ function Information () {
                         </p>
                     </div>
                 </fieldset>
-            <Button background={true}>Proceed to checkout</Button>
+            <Button></Button>
             <p>{state?.message}</p>
             </form>
      );

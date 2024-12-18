@@ -4,10 +4,6 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_bookingform;
 async function apiFetch(url, options = {}) {
   const response = await fetch(url, options);
 
-  // if (!response.ok) {
-  //   const errorData = await response.json();
-  //   throw new Error(`API error: ${errorData.message || "Unknown error"}`);
-  // }
   return response.json();
 }
 
@@ -39,37 +35,21 @@ export async function postData(data) {
 }
 
 
-// FORMSSSSSSSS
-// DANIIIII CAMPING
+
+// CAMPING
 
 export async function getAvailableSpots() {
   const response = await fetch("http://localhost:8080/available-spots");
   const data = await response.json();
 
   const spots = Object.keys(data).map((area) => ({
-    area, // Nyckeln (området)
+    area: data[area].area, // Nyckeln (området)
     spots: data[area].spots, // Totala platser
     available: data[area].available, // Tillgängliga platser
   }));
 
   return spots; // Returnerar en array av områden med tillhörande data
 }
-
-
-// export async function getAvailableSpots () {
-//   const response = await fetch ("http://localhost:8080/available-spots");
-//   const data = await response.json();
-
-//   const spots = [];
-
-//   Object.keys(data).forEach((spots) => {
-//     Object.keys(data[spots]).forEach((available) => {
-//       spots.push(...data[spots][available]); 
-//     });
-//   });
-
-//   return spots;
-// }
 
 // Reserve spot 
 

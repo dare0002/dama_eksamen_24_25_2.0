@@ -7,8 +7,8 @@ import { Bs2Circle } from "react-icons/bs";
 import { Bs3Circle } from "react-icons/bs";
 
 
-const Accordion = () => {
-    const [isOpen, setIsOpen] = useState (0);
+const Accordion = ({onCartUpdate}) => {
+    const [isOpen, setIsOpen] = useState (1);
 
     const checkoutData = [
         {
@@ -42,6 +42,7 @@ const Accordion = () => {
                         step={item.step}
                         text={item.text}
                         answer={item.answer}
+                        onCartUpdate={onCartUpdate}
                     />
                ))}   
         </section>

@@ -6,9 +6,15 @@ import { IoRemove } from "react-icons/io5";
 import Amount from "./Amount";
 import Camping from "./Camping";
 import Information from "./Information";
+import ButtonPrebook from "./ButtonPrebook";
 
 
-const AccordionItem = ({isOpen, setIsOpen, item, step, text, answer, campingData}) => {
+
+
+const AccordionItem = ({isOpen, setIsOpen, item, step, text, answer, campingData, onCartUpdate}) => {
+    const handleUpdate = (updatedItem) => {
+        onCartUpdate(updatedItem);
+    }
 
     return (
         <div className="py-4 px-12 border"> 
@@ -37,11 +43,19 @@ const AccordionItem = ({isOpen, setIsOpen, item, step, text, answer, campingData
         <section className="text-sm text-black">
             {item === 1 && (
                 <>
-                    <Amount type="Regular"/>
-                    <Amount type="VIP"/>
+                    <Amount type="Regular" price={799} onUpdate={handleUpdate}/>
+                    <Amount type="VIP" price={1299} onUpdate={handleUpdate}/>
+
+                    <ButtonPrebook background={true} isOpen={isOpen} setIsOpen={setIsOpen}
+                    // onClick={() => {
+                    //     console.log("open camping section");
+                    //  setIsOpen(2)} }
+                    >
+                    </ButtonPrebook>
+
                 </>
             )}
-            {item === 2 && <Camping />}
+            {item === 2 && <Camping isOpen={isOpen} setIsOpen={setIsOpen}/>}
             {/* {item === 2 && campingData && <Camping campingData= {campingData}/>} */}
             {item === 3 && <Information /> }
 

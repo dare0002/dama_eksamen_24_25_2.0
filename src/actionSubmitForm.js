@@ -17,7 +17,11 @@ export async function actionSubmitForm(prev, formData) {
 //   NAME LENGTH IS MISSING
 
   const errors = {};
-  if (!data.name) {errors.name = "Full name is required";}
+  if (!data.name) {errors.name = "Full name is required";
+  } else if (data.name.length === 1) {
+    errors.name = "Does your name really have only one character?";
+  }
+  
   if (!data.email || !data.email.includes("@")) {errors.email = "Email is invalid";}
   if (!data.telephone) {errors.telephone = "Phone number is required";}
   if (!data.addressLine1) {errors.addressLine1 = "Address is required";}
@@ -51,7 +55,7 @@ export async function actionSubmitForm(prev, formData) {
 
   if (result) {
     revalidatePath("/");
-    return { success: true, message: "Redirecting to payment" };
+    return { success: true, message: "Your information is being handled" };
   }
   
   return { success: false, message: "Submission failed." };

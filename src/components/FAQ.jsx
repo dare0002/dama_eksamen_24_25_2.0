@@ -27,7 +27,7 @@ const Accordion = () => {
   return (
     <section className="w-full max-w-2xl mx-auto  px-4 md:px-6 py-24 bg-transparent bg-no-repeat">
       <h3 className="text-white pb-4">FAQ</h3>
-      <p className="text-white text pb-12">Frequently asked questions</p>
+
       {faqData.map((item, index) => (
         <Item
           key={index}

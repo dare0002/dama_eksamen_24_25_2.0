@@ -50,14 +50,11 @@ const ArtistCard = ({ band }) => {
         <h4>{band.genre}</h4>
       </div>
       <div className="col-start-3 col-span-2 row-start-6  border border-solid border-offwhite">
-        <motion.a>
-          <span>BUY TICKETS.</span>
-        </motion.a>
-        {/* <Link href="/Tickets">
-          <motion.button className="border border-offwhite py-2 px-6 w-fit bg-orange/0 transition-colors hover:bg-orange">
+        <Link href="/Tickets">
+          <button className="border border-offwhite py-2 px-6 w-fit bg-orange/0 transition-colors hover:bg-orange">
             <span className="text-xl font-semibold">TICKETS</span>
-          </motion.button>
-        </Link> */}
+          </button>
+        </Link>
       </div>
     </section>
   );

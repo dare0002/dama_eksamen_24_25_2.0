@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { getAvailableSpots, reserveSpot, fulfillReservation } from "@/lib/apiforms";
-import Button from "@/components/Button";
+import ButtonReserveCam from "./ButtonReserveCam";
 
-
-const Camping = () => {
+const Camping = ({isOpen, setIsOpen}) => {
     const [campingData, setCampingData] = useState([]);
     const [selectedArea, setSelectedArea] = useState ("");
-    // const [amount, setAmount] = useState (1); 
+   
     const [reservationId, setReservationId] = useState();
     const [message, setMessage] = useState("");
+
+    const [timer, setTimer] = useState(0);
+    const [timerActive, setTimerActive] = useState(false);
 
     useEffect(() => {
         const fetchCampingData = async () => {
@@ -25,16 +27,51 @@ const Camping = () => {
         fetchCampingData();
     }, []);
 
+
+
+
+
+    // TIMER 
+
+    useEffect(() => {
+        let interval;
+
+        if (timerActive && timer > 0) {
+            interval = setInterval(() => {
+
+                setTimer((prevTimer) =>{
+                    const newTimer = prevTimer - 1;
+                    console.log("Updated Timer:", newTimer); 
+                    return newTimer;
+                });
+            }, 1000);
+        } else if (timer === 0) {
+            clearInterval(interval);
+            setMessage("Reservation expired");
+        }
+        return () => clearInterval(interval);
+    }, [timerActive, timer]);
+
+
+
+
     const handleReservation = () => {
         if (!selectedArea) {
             setMessage("Please select an area");
             return;
         }
 
+
+
+        // STARTER TIMER HER
+
         reserveSpot(selectedArea,1)
         .then((id) => {
             setReservationId(id);
             setMessage(`Reservation successful! Booking reference: ${id}`);
+            setTimer(5 * 60);
+            setTimerActive(true);
+             console.log("Reservation ID:", id); 
         })
         .catch((error) => {
             console.error("Error reserving spot;", error);
@@ -48,10 +85,13 @@ const Camping = () => {
             return;
         }
 
+
+
         fulfillReservation(reservationId)
         .then(() => {
             setMessage("Reservation confirmed");
             setReservationId("");
+            setTimerActive(false);
         })
         .catch((error) => {
             console.error("Error fulfulling reservation:", error);
@@ -59,9 +99,39 @@ const Camping = () => {
         });
     };
 
+
+
+
+
+
+    // CHATGPT TIMER
+
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className="max-w-2xl mx-auto p-6 bg-offwhite rounded-lg shadow-md">
             <h3 className="text-2xl font-semibold mb-6"> Camping Spots</h3>
+
+            {timerActive && (
+                <div className="mb-4 p-2 bg-white text-red-800 font-semibold rounded-lg">
+                    <h4 className="text-lg">Time Remaining: {formatTime(timer)}</h4>
+                </div>
+            )}
+
 
             <ul className="mb-6 space-y-2">
                 {campingData.length > 0 ? (
@@ -71,7 +141,7 @@ const Camping = () => {
                         className="p-4 border rounded-lg bg-gray-50 text-gray-700 flex flex-col"
                         >
                             <strong className="text-lg font-medium text-gray-800">
-                                Area: {spot.area}
+                                {spot.area}
                             </strong>
                             <span>Total Spots: {spot.spots}</span>
                             <span>Available Spots: {spot.available} </span>
@@ -109,16 +179,16 @@ const Camping = () => {
             </div>
 
             <div>
-                <Button
-                onClick= {handleReservation}
+                <ButtonReserveCam isOpen={isOpen} setIsOpen={setIsOpen} handleReservation={handleReservation}
+                // onClick= {handleReservation}
                 className="w-full py-2 px-4 bg-blue-500 text-offwhite font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                     <h4>Reserve spot</h4>
-                </Button>
+                </ButtonReserveCam>
                 {message && <p className="mt-4 text-red-600">{message}</p>}
             </div>
 
-            {reservationId && (
+            {/* {reservationId && (
              <div className="mt-6">
                 <button
                 onClick={handleFulfill}
@@ -127,41 +197,11 @@ const Camping = () => {
                     <h4>Fulfill reservation</h4>
                 </button>
              </div>
-            )}
+            )} */}
         </div>
     ); 
 };
 
-
-//     const handleAreaSelect = (area) => {
-//         setSelectedArea(area === selectedArea ? null : area);
-//     };
-
-//     return (
-//         <section className="gap-4">
-//             <h3 className="text-2xl"> Choose a camping area</h3>
-//             <ul className="gap-4">
-//                 {campingData.map((area) => (
-//                     <li
-//                     key={area.area}
-//                     className={`p-4 border rounded-lg cursor-pointer ${
-//                         selectedArea === area.area ? "bg-green-200" : "bg-gray-50"
-//                         }`}
-//                         onClick={() => handleAreaSelect(area.area)}
-//                     >
-//                         <div className="flex justify-between items-center">
-//                             <span className="text-lg">{area.area}</span>
-//                             <span className="text-sm">{area.available} Available spots</span>
-//                         </div>
-//                     </li>
-//                 ))}
-//             </ul>
-//             {selectedArea && (
-//                 <p>You have selected:{selectedArea}</p>
-//             )}
-//         </section>
-//       );
-// };
  
 export default Camping;
 

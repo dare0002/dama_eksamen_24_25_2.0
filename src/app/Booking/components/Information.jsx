@@ -1,7 +1,7 @@
 "use client"
 
 import { actionSubmitForm } from "@/actionSubmitForm";
-import Button from "./Button";
+import CheckoutButton from "./CheckoutButton";
 import { useActionState } from "react";
 
 function Information () {
@@ -118,7 +118,7 @@ function Information () {
                         </p>
                     </div>
                 </fieldset>
-            <Button></Button>
+            <CheckoutButton btnText={"Proceed to payment"}/>
             <p>{state?.message}</p>
             </form>
      );

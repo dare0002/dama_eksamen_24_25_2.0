@@ -8,7 +8,6 @@ const BandsSchedule = async ({ schedule }) => {
   return (
     <ul className="flex flex-wrap gap-x-6 place-items-center place-content: center; ">
       {schedule.map((scene, index) => {
-        // Find bandet i listen baseret på scene.act
         const band = bands.find((b) => b.name === scene.act);
 
         return (

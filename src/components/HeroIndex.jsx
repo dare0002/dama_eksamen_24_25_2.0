@@ -12,6 +12,7 @@ const HeroIndex = () => {
         width={1000}
         height={600}
         alt="abstract image in orange and pink"
+        className=""
       />
     </div>
   );

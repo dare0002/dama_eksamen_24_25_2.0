@@ -26,23 +26,12 @@ const ArtistCard = ({ band }) => {
       <div className="row-start-4 col-span-2 border border-solid border-offwhite pt-4">
         <h3 className="text-lg  px-8">Members.</h3>
         <div className="grid py-4 px-8 grid-cols-2">
-          {band.members.map((member, i) => (
-            <h5 key={i}>{member}</h5>
+          {band.members.map((member, index) => (
+            <h5 key={index}>{member}</h5>
           ))}
         </div>
       </div>
-      {/* <div className="col-start-3 col-span-1 border border-solid border-offwhite">
-        <h4>DATE.</h4>
-      </div>
-      <div className="border border-solid">
-        <h4>TUESDAY 05 JUNE 2025</h4>
-      </div>
-      <div className="col-start-3 col-span-1 border border-solid border-offwhite">
-        <h4>STAGE.</h4>
-      </div>
-      <div className="border border-solid border-offwhite">
-        <h4>ANAHEIM</h4>
-      </div>*/}
+
       <div className="flex w-full md:grid grid-cols-2 col-start-1 col-span-2 row-start-5 ">
         <div className="border border-solid  border-offwhite flex place-items-center w-full">
           <h4 className="text-lg py-1 px-8 ">GENRE.</h4>

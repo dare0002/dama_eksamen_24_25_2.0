@@ -5,15 +5,15 @@ import Link from "next/link";
 const ArtistCard = ({ band }) => {
   return (
     <section className="grid grid-cols-4 border border-solid mx-20 my-12">
-      <div className="col-start-1 col-span-2 row-span-1 border border-solid border-offwhite">
-        <h2>{band.name}</h2>
+      <div className="col-start-1 col-span-2 row-span-1 border border-solid border-offwhite flex place-content-center place-items-center">
+        <h2 className="text-2xl">{band.name}</h2>
       </div>
       <div className="col-start-3 col-span-2  row-span-3 border border-solid border-offwhite">
         <Image
           src={
             band.logo.startsWith("https://")
               ? band.logo
-              : `http://localhost:8080/logos/${band.logo}`
+              : `https://kindly-elegant-fork.glitch.me/logos/${band.logo}`
           }
           width={400}
           height={400}

@@ -2,7 +2,7 @@ import Newsletter from "./Newsletter";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col sm:grid sm:grid-cols-2 gap-y-8 border-t border-s-offwhite p-8 gap-x-28">
+    <footer className="flex flex-col sm:grid sm:grid-cols-2 gap-y-8 border-t border-s-offwhite p-8 px-20 gap-x-28">
       <Newsletter />
       <div className="flex  gap-8 px-8 flex-row">
         <article>

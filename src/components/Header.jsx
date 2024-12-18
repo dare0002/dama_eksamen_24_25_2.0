@@ -1,13 +1,19 @@
 "use client";
-import { motion, MotionConfig } from "motion/react";
+import { motion, MotionConfig, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
 const Header = () => {
   const [active, setActive] = useState(false);
+  const { scrollY } = useScroll();
+  console.log(scrollY.get());
+  const yPosition = useTransform(scrollY, [0, 800], ["85vh", "0vh"]); // 500px scroll for hele bevægelsen
 
   return (
-    <header className="sticky bg-black flex place-content-between place-items-center p-5 z-50">
+    <motion.header
+      style={{ y: yPosition }}
+      className="sticky top-0 -translate-y-1/2 bg-black flex place-content-between place-items-center p-5 z-50"
+    >
       <Link href="/">
         <h2 className="font-bold text"> FOOFEST </h2>
       </Link>
@@ -95,10 +101,18 @@ const Header = () => {
                 Line Up.
               </Link>
             </li>
+            <li>
+              <Link
+                href="/Tickets"
+                onClick={() => setActive(false)} // Lukker menuen, når linket klikkes
+              >
+                Tickets.
+              </Link>
+            </li>
           </ul>
         )}
       </nav>
-    </header>
+    </motion.header>
   );
 };
 

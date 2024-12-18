@@ -26,7 +26,10 @@ const Lineup = async () => {
 
   return (
     <div className="flex flex-col place-content-center p-8">
-      <h2 className="text-3xl font-bold mb-4 ">Festival Lineup</h2>
+      <h2 className="text-3xl font-bold mb-4 sm:px-12 md:px-24 lg:px-40">
+        Festival Lineup.
+      </h2>
+
       <div className=" flex flex-col gap-y-6 ">
         <div className="px-7 sm:px-12 md:px-24 lg:px-48 ">
           <SceneSchedule sceneSchedule={midgardSchedule} scene="Midgard" />

@@ -1,37 +1,64 @@
 "use client";
-
+import { motion, MotionConfig } from "motion/react";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 
-const Item = ({isOpen, setIsOpen, item, question, answer}) => {
+const Item = ({ isOpen, setIsOpen, item, question, answer }) => {
+  return (
+    <div className="py-4 px-12 border">
+      <header className=" flex place-items-center place-content-between">
+        <span className="text-offwhite">{question}</span>
 
-    return (
-        <div className="py-4 px-12 border"> 
-            <header>
-            <button onClick={() => {
-              isOpen === item ? setIsOpen(0) : setIsOpen (item);
-            }} 
-                className="flex items-center justify-between w-full text-left font-semibold py-2">
-
-            <span className = "text-offwhite">{question}</span>
-            <span className="ml-8 self-start">
-                {isOpen === item ? (
-                <IoClose className = "text-2xl"/> 
-            ) : (
-                <IoRemove className = "text-2xl"/>
-                )}
-                </span>
-            </button>
-        </header>
-
-        {isOpen === item && (
-        <section className="text-sm text-offwhite">
-            <p className="pb-3">{answer}</p>
-        </section> 
-    )}
+        <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>
+          <motion.button
+            initial={false}
+            onClick={() => (isOpen === item ? setIsOpen(0) : setIsOpen(item))}
+            className="relative  h-10 w-10 "
+            animate={isOpen === item ? "open" : "closed"}
+          >
+            <motion.span
+              style={{
+                left: "50%",
+                top: "50%",
+                x: "-50%",
+                y: "-50%",
+              }}
+              className="absolute h-0.5 w-5 bg-offwhite"
+              variants={{
+                open: {
+                  rotate: ["90deg", "0deg", "0deg"],
+                },
+                closed: {
+                  rotate: ["0deg", "0deg", "90deg"],
+                },
+              }}
+            />
+            <motion.span
+              style={{
+                left: "50%",
+                top: "50%",
+                x: "-50%",
+                y: "-50%",
+              }}
+              className="absolute h-0.5 w-5 bg-offwhite"
+            />
+          </motion.button>
+        </MotionConfig>
+      </header>
+      {isOpen === item && (
+        <motion.section
+          className="text-sm text-offwhite"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <p className="pb-3">{answer}</p>
+        </motion.section>
+      )}
     </div>
-    );
-}
- 
+  );
+};
+
 export default Item;

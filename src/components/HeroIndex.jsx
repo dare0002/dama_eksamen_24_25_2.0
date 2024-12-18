@@ -10,7 +10,7 @@ const HeroIndex = () => {
       <Image
         src="/heroimg.svg"
         width={1000}
-        height={800}
+        height={600}
         alt="abstract image in orange and pink"
       />
     </div>

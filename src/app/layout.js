@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Head from "next/head";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -22,6 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <title>Forside Titel</title>
+      </Head>
       <body
         className={`${ClashGroteskRegular.variable} ${ClashGroteskSemibold.variable} antialiased`}
       >

@@ -34,7 +34,8 @@ const Camping = ({
     }
     reserveSpot(selectedArea, ticketAmount).then((id) => {
       setReservationId(id);
-      console.log("Reservation ID:", id);
+      localStorage.setItem("reservationId", id);
+      console.log("Reservation ID saved to Local Storage:", id);
     });
   };
 

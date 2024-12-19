@@ -1,20 +1,34 @@
 "use client";
 import Link from "next/link";
-import { useFormStatus } from "react-dom";
+import { useState, useEffect } from "react";
 import { fulfillReservation } from "@/lib/apiforms";
 
-function CheckoutButton({ btnText, reservationId }) {
-  const { pending } = useFormStatus();
+// hjælp til fejlfinding og finde id med localstorage af CHATGPT
 
-  console.log("reservationId", reservationId);
+function CheckoutButton({ btnText, reservationId }) {
+  const [idFromLocalStorage, setIdFromLocalStorage] = useState(null);
+
+  useEffect(() => {
+    if (!reservationId) {
+      const storedId = localStorage.getItem("reservationId");
+      setIdFromLocalStorage(storedId);
+      console.log("Fetched Reservation ID from Local Storage:", storedId);
+    }
+  }, [reservationId]);
+
+  const handleCheckout = async () => {
+    const idToUse = reservationId || idFromLocalStorage;
+    const response = await fulfillReservation({ id: idToUse });
+    console.log("Reservation fulfilled successfully:", response);
+  };
+
   return (
     <Link href="/Payment">
       <button
-        disabled={pending}
-        type="submit"
+        onClick={handleCheckout}
         className="w-full bg-black text-offwhite py-4 px-6 hover:bg-green-700 border border-solid border-offwhite"
       >
-        {pending ? "Redirecting to payment..." : btnText}
+        {btnText}
       </button>
     </Link>
   );

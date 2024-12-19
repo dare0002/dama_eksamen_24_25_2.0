@@ -100,7 +100,7 @@ const AccordionItem = ({
               ))}
               <CheckoutButton
                 btnText={"Proceed to payment"}
-                reservationId={reservationId}
+                reservationId={reservationId} // Send reservationId som prop
               />
               <p>{state?.message}</p>
             </>

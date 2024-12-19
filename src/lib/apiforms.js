@@ -23,7 +23,6 @@ export async function getData() {
   return data;
 }
 
-
 export async function postData(data) {
   return apiFetch(endpoint, {
     method: "POST",
@@ -36,93 +35,86 @@ export async function postData(data) {
   });
 }
 
-
-
 // CAMPING med Axios
 
-export async function getAvailableSpots () {
+export async function getAvailableSpots() {
   try {
     const response = await axios.get("http://localhost:8080/available-spots");
     const data = response.data;
 
     const spots = Object.keys(data).map((area) => ({
-      area: data[area].area, 
-      spots: data[area].spots, 
+      area: data[area].area,
+      spots: data[area].spots,
       available: data[area].available,
     }));
 
     return spots;
-  }
-  catch (error) {
-    console.error("Failed to fetch available spots", error.message)
-    throw new Error ("Failed to fetch available spots");
+  } catch (error) {
+    console.error("Failed to fetch available spots", error.message);
+    throw new Error("Failed to fetch available spots");
   }
 }
 
-// Camping GET Available spots uden Axios 
+// Camping GET Available spots uden Axios
 
 // export async function getAvailableSpots() {
 //   const response = await fetch("http://localhost:8080/available-spots");
 //   const data = await response.json();
 
 //   const spots = Object.keys(data).map((area) => ({
-//     area: data[area].area, 
-//     spots: data[area].spots, 
+//     area: data[area].area,
+//     spots: data[area].spots,
 //     available: data[area].available,
 //   }));
 
 //   return spots;
 // }
 
-
-
 // Reservespot med Axios
 
-export async function reserveSpot (area, amount) {
-  try {
-    const response = await axios.put("http://localhost:8080/reserve-spot", {
-      area, 
-      amount, 
-    });
-
-    if (response.status !== 200) {
-      throw new Error ("Failed to reserve spot");
-    }
-
-      return response.data.id;
-    } catch (error) {
-    console.error("Error reserving spot:", error.message);
-    throw new Error("Failed to reserve spot");
-  }
-}
-
-
-// Reserve spot uden Axios 
 // export async function reserveSpot (area, amount) {
-//   const response = await fetch("http://localhost:8080/reserve-spot", {
-//     method: "PUT", 
-//     headers: {
-//       "Content-Type" : "application/json", 
-//     }, 
-//     body: JSON.stringify({area, amount}),
-//   });
+//   try {
+//     const response = await axios.put("http://localhost:8080/reserve-spot", {
+//       area,
+//       amount,
+//     });
 
-//   if (!response.ok) {
+//     if (response.status !== 200) {
+//       throw new Error ("Failed to reserve spot");
+//     }
+
+//       return response.data.id;
+//     } catch (error) {
+//     console.error("Error reserving spot:", error.message);
 //     throw new Error("Failed to reserve spot");
 //   }
-
-//   // Returnerer ID 
-//   const data = await response.json();
-//   return data.id;
 // }
 
+//Reserve spot uden Axios
+export async function reserveSpot(area, amount) {
+  const response = await fetch(
+    "https://kindly-elegant-fork.glitch.me/reserve-spot",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ area, amount }),
+    }
+  );
 
+  const data = await response.json();
+  console.log(data.id);
+  return data.id;
+}
 
 export async function fulfillReservation(id) {
-  try{
-    const response = await axios.post("http://localhost:8080/fullfill-reservation",
-      id, {
-    });
+  try {
+    const response = await axios.post(
+      "https://kindly-elegant-fork.glitch.me/fullfill-reservation",
+      id,
+      {}
+    );
 
     return response.data;
   } catch (error) {
@@ -131,14 +123,13 @@ export async function fulfillReservation(id) {
   }
 }
 
-
 // fulFillReservation med fetch, uden axios
 // export async function fulfillReservation(id) {
 //   const response = await fetch("http://localhost:8080/fullfill-reservation", {
-//     method: "POST", 
+//     method: "POST",
 //     headers: {
-//       "Content-Type" : "application/json", 
-//     }, 
+//       "Content-Type" : "application/json",
+//     },
 //     body: JSON.stringify({id}),
 //   });
 
@@ -148,11 +139,3 @@ export async function fulfillReservation(id) {
 
 //   return await response.json()
 // }
-
-
-
-
-
-
-
-

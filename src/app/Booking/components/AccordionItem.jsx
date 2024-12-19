@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useActionState } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import Amount from "./Amount";
+import CheckoutButton from "./CheckoutButton";
 import Camping from "./Camping";
 import Information from "./Information";
 import ButtonPrebook from "./ButtonPrebook";
+import { actionSubmitForm } from "@/actionSubmitForm";
 
 const AccordionItem = ({
   isOpen,
@@ -14,11 +17,11 @@ const AccordionItem = ({
   item,
   step,
   text,
-  answer,
-  campingData,
   onCartUpdate,
   cartItems,
 }) => {
+  const [state, formAction] = useActionState(actionSubmitForm);
+  const [reservationId, setReservationId] = useState();
   const handleUpdate = (updatedItem) => {
     onCartUpdate(updatedItem);
   };
@@ -72,9 +75,6 @@ const AccordionItem = ({
                 background={true}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
-                // onClick={() => {
-                //     console.log("open camping section");
-                //  setIsOpen(2)} }
               ></ButtonPrebook>
             </>
           )}
@@ -83,14 +83,26 @@ const AccordionItem = ({
               isOpen={isOpen}
               setIsOpen={setIsOpen}
               cartItems={cartItems}
+              setReservationId={setReservationId}
+              reservationId={reservationId}
             />
           )}
-          {/* {item === 2 && campingData && <Camping campingData= {campingData}/>} */}
           {item === 3 && (
             <>
               {Array.from({ length: ticketAmount }, (_, index) => (
-                <Information key={index} cartItems={cartItems} />
+                <Information
+                  key={index}
+                  cartItems={cartItems}
+                  item={index + 1}
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                />
               ))}
+              <CheckoutButton
+                btnText={"Proceed to payment"}
+                reservationId={reservationId}
+              />
+              <p>{state?.message}</p>
             </>
           )}
 

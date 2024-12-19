@@ -7,10 +7,6 @@ import { FaMinus } from "react-icons/fa6";
 const Amount = ({ type, price, onUpdate }) => {
   const [tickets, setTickets] = useState(0);
 
-  //   useEffect(() => {
-  //     localStorage.setItem(`tickets-${type}`, tickets);
-  //   }, [type, tickets]);
-
   const updateTickets = (newTickets) => {
     localStorage.setItem(`tickets-${type}`, newTickets);
     onUpdate({ title: type, price, count: newTickets });
@@ -57,17 +53,6 @@ const Amount = ({ type, price, onUpdate }) => {
         </button>
       </div>
     </section>
-
-    // <section className="flex items-center space-x-4 mb-6 p-4 bg-offwhite rounded-lg shadow-md">
-    //     <h4 className="text-xl font-semibold text-gray-800">{type}</h4>
-    //     <div className="flex items-center space-x-4">
-    //         <FaPlus onClick={addTicket} className="text-semibold cursor-pointer p-2 rounded" />
-    //         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-black text-lg bg-pink">
-    //             {tickets}
-    //         </div>
-    //         <FaMinus onClick={removeTicket} className="text-semibold cursor-pointer"/>
-    //     </div>
-    // </section>
   );
 };
 

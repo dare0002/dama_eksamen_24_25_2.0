@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Accordion from "./components/Accordion";
 import OrderDetails from "./components/OrderDetails";
+import CountDown from "./components/CountDown";
 
 const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -32,8 +33,10 @@ const Checkout = () => {
         <div className="col-span-2 ">
           <Accordion onCartUpdate={handleCartUpdate} cartItems={cartItems} />
         </div>
+
         <div className="md:col-span-1 lg:col-span-1 md:relative">
           <div className="md:sticky top-1/4">
+            <CountDown seconds={300} />
             <OrderDetails cartItems={cartItems} />
           </div>
         </div>

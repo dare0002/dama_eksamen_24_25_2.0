@@ -1,5 +1,7 @@
 import CheckoutButton from "../Booking/components/CheckoutButton";
 import { MdOutlinePayment } from "react-icons/md";
+import Link from "next/link";
+import Button from "@/components/Button";
 
 const Payment = () => {
   return (
@@ -74,13 +76,17 @@ const Payment = () => {
               spellCheck="false"
               required
             />
+            <button></button>
           </div>
         </fieldset>
-        <button></button>
-        <CheckoutButton btnText="Pay" />
+        <Link href="/OrderConfirmation">
+        <button className="w-full bg-black text-offwhite py-4 px-6 hover:bg-green-700 border border-solid border-offwhite">Pay</button>
+        </Link>
       </form>
     </section>
   );
 };
+
+
 
 export default Payment;

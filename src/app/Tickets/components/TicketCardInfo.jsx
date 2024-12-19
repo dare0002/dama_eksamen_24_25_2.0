@@ -1,18 +1,25 @@
-import TicketCard from "@/components/TicketCard";
+import TicketCard from "./TicketCard";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 const TicketCardInfo = () => {
   return (
     <div className="max-w-xl mx-auto md:max-w-3xl md:mx-auto px-6 md:px-4 md:py-4 md:space-y-6">
-      <p className="text-offwhite md:text-xl">Passes</p>
-      <div className="md:grid md:grid-cols-3">
+        <div className="flex items-center justify-between mb-10">
+            <p className="text-offwhite md:text-xl">Passes</p>
+            <Link href="/Booking">
+            <Button background={true}>BUY TICKETS HERE.</Button>
+            </Link>
+        </div>
+      <div className="md:grid md:grid-cols-3 mb-10">
         <div className="md:col-span-1 md:flex">
           <TicketCard
             ticketImg="/TickReg.svg"
-            // type="Regular"
+            type="Regular"
             displayed="hidden"
-            // price="799"
-            // bgColor="bg-pink"
-            // link=""
+            price="799"
+            bgColor="bg-pink"
+            link=""
           />
         </div>
 
@@ -50,7 +57,7 @@ const TicketCardInfo = () => {
           <TicketCard
             displayed="hidden"
             ticketImg="/TickVip.svg"
-            //   type="VIP" price="1299" bgColor="bg-orange" link=""
+              type="VIP" price="1299" bgColor="bg-orange" link=""
           />
         </div>
         <div className="bg-offwhite text-black p-10 md:col-span-2 md:flex md:flex-col md:p-10">
@@ -75,6 +82,11 @@ const TicketCardInfo = () => {
             <li>Dedicated VIP restrooms and premium facilities.</li>
           </ul>
         </div>
+      </div>
+
+      <div className="text-center text-xs mt-10 ">
+        <p className="text-sm md:text-lg">NB if you buy a ticket you must prebook a camping spot.</p>
+         <p className="text-xs md:text-base mt-2">You can prebook a camping spot in the checkout section</p>
       </div>
     </div>
   );

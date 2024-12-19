@@ -57,7 +57,7 @@ function Information(index, item) {
               <input
                 className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                 id="full-name"
-                name="name"
+                name="full-name"
                 type="text"
                 autoComplete="name"
                 spellCheck="false"
@@ -98,8 +98,8 @@ function Information(index, item) {
               </label>
               <input
                 className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
-                id="telephone"
-                name="telephone"
+                id="telephone-number"
+                name="telephone-number"
                 type="tel"
                 autoComplete="tel"
                 required

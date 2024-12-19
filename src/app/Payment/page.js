@@ -76,6 +76,7 @@ const Payment = () => {
             />
           </div>
         </fieldset>
+        <button></button>
         <CheckoutButton btnText="Pay" />
       </form>
     </section>

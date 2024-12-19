@@ -7,7 +7,7 @@ const Header = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <header className="sticky top-10 -translate-y-1/2 bg-black flex place-content-between place-items-center p-5 z-50">
+    <header className="sticky top-0 bg-black flex place-content-between place-items-center p-5 z-50">
       <Link href="/">
         <h2 className="font-bold text"> FOOFEST </h2>
       </Link>

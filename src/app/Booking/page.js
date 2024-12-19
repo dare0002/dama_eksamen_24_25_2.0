@@ -33,7 +33,7 @@ const Checkout = () => {
           <Accordion onCartUpdate={handleCartUpdate} cartItems={cartItems} />
         </div>
         <div className="md:col-span-1 lg:col-span-1 md:relative">
-          <div className="md:sticky top-6">
+          <div className="md:sticky top-1/4">
             <OrderDetails cartItems={cartItems} />
           </div>
         </div>

@@ -23,6 +23,10 @@ const AccordionItem = ({
     onCartUpdate(updatedItem);
   };
 
+  const ticketAmount = cartItems.reduce((total, item) => {
+    return total + parseInt(item.count, 10);
+  }, 0);
+
   return (
     <div className="py-4 px-12 border">
       <header>
@@ -74,11 +78,23 @@ const AccordionItem = ({
               ></ButtonPrebook>
             </>
           )}
-          {item === 2 && <Camping isOpen={isOpen} setIsOpen={setIsOpen} />}
+          {item === 2 && (
+            <Camping
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              cartItems={cartItems}
+            />
+          )}
           {/* {item === 2 && campingData && <Camping campingData= {campingData}/>} */}
-          {item === 3 && <Information />}
+          {item === 3 && (
+            <>
+              {Array.from({ length: ticketAmount }, (_, index) => (
+                <Information key={index} cartItems={cartItems} />
+              ))}
+            </>
+          )}
 
-          <p className="pb-3">{answer}</p>
+          {/* <p className="pb-3">{answer}</p> */}
         </section>
       )}
     </div>

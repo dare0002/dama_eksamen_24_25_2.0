@@ -17,9 +17,8 @@ export async function getData() {
     },
   });
 
-  console.log("API response:", data); // Log dataen for at se, hvad der kommer tilbage
+  console.log("API response:", data); 
 
-  // Fortsæt med at behandle dataen, hvis den er korrekt
   return data;
 }
 
@@ -55,22 +54,6 @@ export async function getAvailableSpots() {
   }
 }
 
-// Camping GET Available spots uden Axios
-
-// export async function getAvailableSpots() {
-//   const response = await fetch("http://localhost:8080/available-spots");
-//   const data = await response.json();
-
-//   const spots = Object.keys(data).map((area) => ({
-//     area: data[area].area,
-//     spots: data[area].spots,
-//     available: data[area].available,
-//   }));
-
-//   return spots;
-// }
-
-// Reservespot med Axios
 
 export async function reserveSpot(area, amount) {
   try {
@@ -108,19 +91,3 @@ export async function fulfillReservation(id) {
   }
 }
 
-// fulFillReservation med fetch, uden axios
-// export async function fulfillReservation(id) {
-//   const response = await fetch("http://localhost:8080/fullfill-reservation", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type" : "application/json",
-//     },
-//     body: JSON.stringify({id}),
-//   });
-
-//   if (!response.ok) {
-//     throw new Error("Failed to fulfill reservation");
-//   }
-
-//   return await response.json()
-// }

@@ -17,7 +17,7 @@ export default function Home() {
         <IndexBoxes />
         <Banner />
         <FAQ />
-        <div className="p-4 flex justify-center text-3xl">
+        <div className="p-4 flex justify-center text-3xl md:mb-10">
           <Link href="/Tickets">
             <Button background={true}>Tickets.</Button>
           </Link>

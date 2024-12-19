@@ -10,7 +10,7 @@ const TicketCard = ({ ticketImg, Color, displayed }) => {
         width={600}
         height={200}
         alt="poster for graphic element for lineup"
-        className="w-3/4"
+        className="md:w-3/4"
       />
       <Link href="/Tickets">
         <button

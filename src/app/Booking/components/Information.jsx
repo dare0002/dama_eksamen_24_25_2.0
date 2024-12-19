@@ -186,9 +186,7 @@ function Information(index, item) {
               </p>
             </div>
           </fieldset>
-          <button>
-            {pending ? "Redirecting to next ticket" : "Next Ticket"}
-          </button>
+
           {/* <CheckoutButton btnText={"Proceed to payment"} />
           <p>{state?.message}</p> */}
         </form>

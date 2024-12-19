@@ -1,8 +1,5 @@
 "use client";
 import { motion, MotionConfig } from "motion/react";
-import { useState } from "react";
-import { IoClose } from "react-icons/io5";
-import { IoRemove } from "react-icons/io5";
 
 const Item = ({ isOpen, setIsOpen, item, question, answer }) => {
   return (

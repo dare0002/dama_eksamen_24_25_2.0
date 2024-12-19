@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from "./Button";
+
 import Image from "next/image";
 
 const TicketCard = ({ ticketImg, Color, displayed }) => {

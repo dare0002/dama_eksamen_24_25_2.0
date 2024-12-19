@@ -24,7 +24,7 @@ const CountDown = ({ seconds }) => {
   useEffect(() => {
     if (countdown < 0) {
       clearInterval(timerId.current);
-      alert("Time is up. Please reload page, to try booking ");
+      alert("Reservation ended. Please reload page, to start new booking ");
     }
   }, [countdown]);
 

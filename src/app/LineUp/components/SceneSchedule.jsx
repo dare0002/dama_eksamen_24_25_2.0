@@ -1,5 +1,3 @@
-// import Link from "next/link";
-
 import BandsSchedule from "./BandsSchedule";
 
 const SceneSchedule = ({ sceneSchedule, scene }) => {

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { motion } from "motion/react";
 import Link from "next/link";
 
 const ArtistCard = ({ band }) => {

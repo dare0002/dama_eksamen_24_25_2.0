@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { motion } from "motion/react";
 
 const BandsSchedule = async ({ schedule }) => {
   const response = await fetch("https://kindly-elegant-fork.glitch.me/bands");

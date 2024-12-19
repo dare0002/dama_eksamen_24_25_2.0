@@ -105,8 +105,6 @@ const AccordionItem = ({
               <p>{state?.message}</p>
             </>
           )}
-
-          {/* <p className="pb-3">{answer}</p> */}
         </section>
       )}
     </div>

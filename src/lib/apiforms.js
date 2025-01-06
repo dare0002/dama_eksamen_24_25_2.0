@@ -38,7 +38,7 @@ export async function postData(data) {
 
 export async function getAvailableSpots() {
   try {
-    const response = await axios.get("http://localhost:8080/available-spots");
+    const response = await axios.get("https://kindly-elegant-fork.glitch.me/available-spots");
     const data = response.data;
 
     const spots = Object.keys(data).map((area) => ({

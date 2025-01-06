@@ -86,7 +86,7 @@ const TicketCardInfo = () => {
 
       <div className="text-center text-xs mt-10 ">
         <p className="text-sm md:text-lg">NB if you buy a ticket you must prebook a camping spot.</p>
-         <p className="text-xs md:text-base mt-2">You can prebook a camping spot in the checkout section</p>
+         <p className="text-xs md:text-base mt-2">You can prebook a camping spot in the checkout section.</p>
       </div>
     </div>
   );

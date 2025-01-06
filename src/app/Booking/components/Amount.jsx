@@ -38,7 +38,7 @@ const Amount = ({ type, price, onUpdate }) => {
       <div className="flex items-center space-x-4">
         <button
           onClick={addTicket}
-          className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="p-2 rounded-full bg-orange text-white hover:bg-orange/60 focus:outline-none focus:ring-2 focus:ring-orange/100"
         >
           <FaPlus className="text-xl" />
         </button>
@@ -47,7 +47,7 @@ const Amount = ({ type, price, onUpdate }) => {
         </div>
         <button
           onClick={removeTicket}
-          className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="p-2 rounded-full bg-orange text-white hover:bg-orange/60 focus:outline-none focus:ring-2 focus:ring-orange/100"
         >
           <FaMinus className="text-xl" />
         </button>

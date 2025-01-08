@@ -6,11 +6,18 @@ import { FaMinus } from "react-icons/fa6";
 
 const Amount = ({ type, price, onUpdate }) => {
   const [tickets, setTickets] = useState(0);
+  const [error, setError] = useState(null); 
 
   const updateTickets = (newTickets) => {
-    localStorage.setItem(`tickets-${type}`, newTickets);
-    onUpdate({ title: type, price, count: newTickets });
-    setTickets(newTickets);
+    if (newTickets < 0) return;
+    try{
+      localStorage.setItem(`tickets-${type}`, newTickets);
+      onUpdate({ title: type, price, count: newTickets });
+      setTickets(newTickets);
+      setError(null);
+    } catch(err) {
+      setError("You must choose a ticket. Please try again. ")
+    }
   };
 
   const addTicket = () => {
@@ -24,13 +31,19 @@ const Amount = ({ type, price, onUpdate }) => {
   };
 
   useEffect(() => {
-    const savedTickets = localStorage.getItem(`tickets-${type}`);
-    onUpdate({ title: type, price, count: savedTickets });
-
-    if (savedTickets) {
-      setTickets(parseInt(savedTickets));
+    try{
+      const savedTickets = localStorage.getItem(`tickets-${type}`);
+      if (savedTickets) {
+      const parsedTickets = parseInt(savedTickets);
+      if (!isNaN(parsedTickets)) {
+      setTickets(parsedTickets);
+      onUpdate({ title: type, price, count: savedTickets });
     }
-  }, [type]);
+  }
+  } catch (err) {
+    setError("Failed to load saved tickets. ")
+  }
+}, [type]);
 
   return (
     <section className="flex items-center justify-between space-x-4 mb-6 p-4 bg-offwhite rounded-lg shadow-md">

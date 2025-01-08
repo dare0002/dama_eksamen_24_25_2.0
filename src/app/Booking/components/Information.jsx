@@ -1,48 +1,59 @@
 "use client";
 
 import { actionSubmitForm } from "@/actionSubmitForm";
-// import CheckoutButton from "./CheckoutButton";
 import { useActionState } from "react";
-import { useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, useEffect } from "react";
+import CheckoutButton from "./CheckoutButton";
+// import { useFormStatus } from "react-dom";
+// import { IoClose } from "react-icons/io5";
+// import { IoRemove } from "react-icons/io5";
 
-import { IoClose } from "react-icons/io5";
-import { IoRemove } from "react-icons/io5";
-
-function Information(index, item) {
+function Information() {
   const [state, formAction] = useActionState(actionSubmitForm);
-  const [isOpen, setIsOpen] = useState(1);
+  const [formData, setFormData] = useState({
+    name: state?.name || "",
+    email: state?.email || "",
+    telephone: state?.telephone || "",
+    addressLine1: state?.addressLine1 || "",
+    addressTown: state?.addressTown || "",
+    addressPostcode: state?.addressPostcode || "",
+  });
 
-  const { pending } = useFormStatus();
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // Kontrollerer om alla fält har fyllts i korrekt här med useEffect
+
+  useEffect(() => {
+    const isValid = 
+      formData.name &&
+      formData.email &&
+      formData.telephone &&
+      formData.addressLine1 &&
+      formData.addressTown &&
+      formData.addressPostcode;
+    setIsFormValid(isValid);
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
-      {/* <header>
-        <button
-          onClick={() => {
-            isOpen === item ? setIsOpen(1) : setIsOpen(item);
-          }}
-          className="flex items-center justify-between w-full text-left font-semibold py-2"
-        >
-          <div className="flex items-center">
-            <span className="text-black">{`Ticket 1`}</span>
-          </div>
-
-          <span>
-            {isOpen === item ? (
-              <IoClose className=" text-black" />
-            ) : (
-              <IoRemove className="text-2xl text-black" />
-            )}
-          </span>
-        </button>
-      </header> */}
-      {/* {isOpen === item && ( */}
       <section>
-        {/* {item === index && ( */}
         <form
           action={formAction}
           noValidate
+          onSubmit={(e) => {
+    if (!state?.success) {
+      e.preventDefault(); // Hindra navigering
+      alert("Please fix the errors before proceeding.");
+    }
+  }}
           className="max-w-2xl mx-auto p-6 bg-offwhite rounded-lg shadow-md"
         >
           <fieldset className="border-0 p-0 my-8 text-left">
@@ -57,15 +68,17 @@ function Information(index, item) {
               <input
                 className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
                 id="full-name"
-                name="full-name"
+                name="name"
                 type="text"
                 autoComplete="name"
                 spellCheck="false"
-                defaultValue={state?.name}
+                onChange={handleChange}
+                Value={state?.name}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors?.["full-name"]}
+                {/* {state?.errors?.["full-name"]} */}
+                {state?.errors?.name}
               </p>
             </div>
 
@@ -84,11 +97,13 @@ function Information(index, item) {
                 aria-describedby="email-hint"
                 autoComplete="email"
                 spellCheck="false"
-                defaultValue={state?.email}
+                onChange={handleChange}
+                Value={state?.email}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.email}
+                {state?.errors?.email}
+                {/* {state?.errors && state.errors.email} */}
               </p>
             </div>
 
@@ -98,14 +113,16 @@ function Information(index, item) {
               </label>
               <input
                 className="border bg-offwhite p-2 rounded-md focus:ring2 focus:ring-pink outline-none"
-                id="telephone-number"
-                name="telephone-number"
+                id="telephone"
+                name="telephone"
                 type="tel"
                 autoComplete="tel"
+                onChange={handleChange}
+                Value={state?.telephone}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.number}
+                {state?.errors?.number}
               </p>
             </div>
           </fieldset>
@@ -126,10 +143,12 @@ function Information(index, item) {
                 name="addressLine1"
                 type="text"
                 autoComplete="address-line1"
+                onChange={handleChange}
+                Value={state?.addressLine1}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.address}
+                {state?.errors?.address}
               </p>
             </div>
 
@@ -145,11 +164,9 @@ function Information(index, item) {
                 name="addressLine2"
                 type="text"
                 autoComplete="address-line2"
-                required
+                onChange={handleChange}
+                Value={state?.addressLine2}
               />
-              <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.address}
-              </p>
             </div>
 
             <div className="form group grid gap-2 mb-6">
@@ -162,10 +179,12 @@ function Information(index, item) {
                 name="addressTown"
                 type="text"
                 autoComplete="address-level2"
+                onChange={handleChange}
+                Value={state?.addressTown}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.address}
+                {state?.errors?.addressTown}
               </p>
             </div>
 
@@ -179,22 +198,46 @@ function Information(index, item) {
                 name="addressPostcode"
                 type="text"
                 autoComplete="postal-code"
+                onChange={handleChange}
+                Value={state?.addressPostcode}
                 required
               />
               <p className="bg-red-100 text-red-950">
-                {state?.errors && state.errors.number}
+                {state?.errors?.addressPostcode}
               </p>
             </div>
           </fieldset>
 
-          {/* <CheckoutButton btnText={"Proceed to payment"} />
-          <p>{state?.message}</p> */}
+
+           {/* <button
+            type="submit"
+            disabled={!isFormValid}
+            className={`w-full py-4 px-6 ${
+              isFormValid
+                ? "bg-black text-white hover:bg-green-700"
+                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+            }`}
+          >
+            Proceed to payment
+          </button>
+           <p>{state?.message}</p> */}
+
+           <CheckoutButton
+              btnText="Proceed to payment"
+              type="submit" // Viktigt om det används i ett formulär
+              disabled={!isFormValid} // Styr om knappen ska vara klickbar
+              className={`w-full py-4 px-6 ${
+                isFormValid
+                  ? "bg-black text-white hover:bg-green-700"
+                  : "bg-gray-400 text-gray-700 cursor-not-allowed"
+              }`}
+            />
+            <p>{state?.message}</p>
         </form>
-        {/* )} */}
       </section>
-      {/* )} */}
     </>
   );
 }
+
 
 export default Information;

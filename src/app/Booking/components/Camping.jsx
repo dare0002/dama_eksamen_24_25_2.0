@@ -102,6 +102,7 @@ const Camping = ({
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           handleReservation={handleReservation}
+          selectedArea={selectedArea}
           className="w-full py-2 px-4 bg-blue-500 text-offwhite font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <h4>Reserve spot</h4>

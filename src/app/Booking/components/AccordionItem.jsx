@@ -11,17 +11,16 @@ import Information from "./Information";
 import ButtonPrebook from "./ButtonPrebook";
 import { actionSubmitForm } from "@/actionSubmitForm";
 
-const AccordionItem = ({
-  isOpen,
-  setIsOpen,
-  item,
-  step,
-  text,
-  onCartUpdate,
-  cartItems,
-}) => {
+const AccordionItem = ({isOpen,setIsOpen,item,step,text,onCartUpdate,cartItems,}) => {
   const [state, formAction] = useActionState(actionSubmitForm);
   const [reservationId, setReservationId] = useState();
+
+
+  // Error-handling chatGPT
+  // const [isFormValid, setIsFormValid] = useState(false);
+  // const [error, setError] = useState({});
+
+
   const handleUpdate = (updatedItem) => {
     onCartUpdate(updatedItem);
   };
@@ -29,6 +28,8 @@ const AccordionItem = ({
   const ticketAmount = cartItems.reduce((total, item) => {
     return total + parseInt(item.count, 10);
   }, 0);
+
+
 
   return (
     <div className="py-4 px-12 border">
@@ -75,6 +76,7 @@ const AccordionItem = ({
                 background={true}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
+                ticketAmount={ticketAmount}
               ></ButtonPrebook>
             </>
           )}

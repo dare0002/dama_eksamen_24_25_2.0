@@ -100,11 +100,11 @@ const AccordionItem = ({isOpen,setIsOpen,item,step,text,onCartUpdate,cartItems,}
                   setIsOpen={setIsOpen}
                 />
               ))}
-              <CheckoutButton
+              {/* <CheckoutButton
                 btnText={"Proceed to payment"}
                 reservationId={reservationId} // Send reservationId som prop
               />
-              <p>{state?.message}</p>
+              <p>{state?.message}</p> */}
             </>
           )}
         </section>

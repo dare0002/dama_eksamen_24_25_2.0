@@ -20,6 +20,7 @@ function Information() {
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
+    const [reservationId, setReservationId] = useState();
 
   // Kontrollerer om alla fält har fyllts i korrekt här med useEffect
 
@@ -73,7 +74,7 @@ function Information() {
                 autoComplete="name"
                 spellCheck="false"
                 onChange={handleChange}
-                Value={state?.name}
+                value={state?.name}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -98,7 +99,7 @@ function Information() {
                 autoComplete="email"
                 spellCheck="false"
                 onChange={handleChange}
-                Value={state?.email}
+                value={state?.email}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -118,7 +119,7 @@ function Information() {
                 type="tel"
                 autoComplete="tel"
                 onChange={handleChange}
-                Value={state?.telephone}
+                value={state?.telephone}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -144,7 +145,7 @@ function Information() {
                 type="text"
                 autoComplete="address-line1"
                 onChange={handleChange}
-                Value={state?.addressLine1}
+                value={state?.addressLine1}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -165,7 +166,7 @@ function Information() {
                 type="text"
                 autoComplete="address-line2"
                 onChange={handleChange}
-                Value={state?.addressLine2}
+                value={state?.addressLine2}
               />
             </div>
 
@@ -180,7 +181,7 @@ function Information() {
                 type="text"
                 autoComplete="address-level2"
                 onChange={handleChange}
-                Value={state?.addressTown}
+                value={state?.addressTown}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -199,7 +200,7 @@ function Information() {
                 type="text"
                 autoComplete="postal-code"
                 onChange={handleChange}
-                Value={state?.addressPostcode}
+                value={state?.addressPostcode}
                 required
               />
               <p className="bg-red-100 text-red-950">
@@ -224,6 +225,7 @@ function Information() {
 
            <CheckoutButton
               btnText="Proceed to payment"
+               reservationId={reservationId}
               type="submit" // Viktigt om det används i ett formulär
               disabled={!isFormValid} // Styr om knappen ska vara klickbar
               className={`w-full py-4 px-6 ${

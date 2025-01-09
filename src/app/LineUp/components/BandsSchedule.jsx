@@ -1,19 +1,34 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { fetchBands } from "@/utils/fetchData";
 
-const BandsSchedule = async ({ schedule }) => {
-  const response = await fetch("https://kindly-elegant-fork.glitch.me/bands");
-  const bands = await response.json();
+const BandsSchedule = ({ schedule }) => {
+  const [bands, setBands] = useState([]);
+
+  useEffect(() => {
+    const loadBands = async () => {
+      try {
+        const bandData = await fetchBands();
+        setBands(bandData);
+      } catch (error) {
+        console.error("Error loading bands:", error);
+      }
+    };
+
+    loadBands();
+  }, []);
+
+  if (bands.length === 0) {
+    return <div>Loading bands...</div>;
+  }
 
   return (
-    <ul className="flex flex-wrap gap-x-6 place-items-center place-content: center border border-t-0 border-r-0 border-b-0 border-offwhite p-3">
+    <ul className="flex flex-wrap gap-x-6 place-items-center border p-3">
       {schedule.map((scene, index) => {
         const band = bands.find((b) => b.name === scene.act);
 
         return (
-          <li
-            key={scene.act}
-            className={index < 3 ? "font-bold text-2xl " : "flex "}
-          >
+          <li key={scene.act} className={index < 3 ? "font-bold text-2xl" : ""}>
             <Link href={`/Artist/${band ? band.slug : ""}`}>{scene.act}</Link>
           </li>
         );

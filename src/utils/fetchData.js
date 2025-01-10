@@ -1,5 +1,3 @@
-// utils/fetchData.js
-
 export const fetchSchedule = async () => {
   const response = await fetch(
     "https://kindly-elegant-fork.glitch.me/schedule"

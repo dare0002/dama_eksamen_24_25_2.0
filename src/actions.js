@@ -4,7 +4,6 @@ import { getData, postData } from "@/lib/api";
 import { revalidatePath } from "next/cache";
 
 export async function actionSubmit(prev, formData) {
-  // await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const data = {
     email: formData.get("email"),

@@ -1,6 +1,5 @@
 import TicketCardInfo from "./components/TicketCardInfo";
 
-
 const Tickets = () => {
     return ( 
         <div className="md:mb-20 mb-10">

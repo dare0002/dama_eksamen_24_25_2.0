@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import { BsTrash3 } from "react-icons/bs";
 
 const OrderDetails = ({ cartItems, onUpdate }) => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,10 +41,6 @@ const OrderDetails = ({ cartItems, onUpdate }) => {
             className="flex justify-between items-center text-black"
           >
             <span className="text-sm flex items-center gap-2">
-              {/* <BsTrash3
-                onClick={() => handleRemoveItem(item.id)}
-                className="cursor-pointer"
-              /> */}
               {item.title} x {item.count}
             </span>
             <span className="font-medium">

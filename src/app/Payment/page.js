@@ -1,4 +1,3 @@
-import CheckoutButton from "../Booking/components/CheckoutButton";
 import { MdOutlinePayment } from "react-icons/md";
 import Link from "next/link";
 import Button from "@/components/Button";
@@ -56,7 +55,6 @@ const Payment = () => {
               id="expiry-date"
               name="expiry-date"
               type="text"
-              // autoComplete=""
               spellCheck="false"
               placeholder="MM/YY"
               required
@@ -72,7 +70,6 @@ const Payment = () => {
               name="cvv"
               type="text"
               placeholder="cvv"
-              // autoComplete=""
               spellCheck="false"
               required
             />

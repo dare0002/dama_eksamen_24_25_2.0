@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import FiltreringLineup from "./components/FiltreringLineup";
 import Lineupschedule from "./components/LineupSchedule";
-import { fetchSchedule } from "@/utils/fetchData";
+import { fetchSchedule } from "@/lib/fetchData";
 
 const Lineup = () => {
   const [scheduleData, setScheduleData] = useState(null);

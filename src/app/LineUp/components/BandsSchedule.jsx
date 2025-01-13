@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { fetchBands } from "@/utils/fetchData";
+import { fetchBands } from "@/lib/fetchData";
 
 const BandsSchedule = ({ schedule }) => {
   const [bands, setBands] = useState([]);

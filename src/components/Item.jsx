@@ -9,6 +9,7 @@ const Item = ({ isOpen, setIsOpen, item, question, answer }) => {
 
         <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>
           <motion.button
+            aria-label="open question button"
             initial={false}
             onClick={() => (isOpen === item ? setIsOpen(0) : setIsOpen(item))}
             className="relative  h-10 w-10 "

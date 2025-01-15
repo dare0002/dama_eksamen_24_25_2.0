@@ -25,8 +25,13 @@ const Accordion = () => {
   ];
 
   return (
-    <section className="w-full max-w-2xl mx-auto  px-4 md:px-6 py-24 bg-transparent bg-no-repeat">
-      <h3 className="text-white pb-4 md:text-xl text-lg">FAQ.</h3>
+    <section
+      aria-describedby="Frequently asked questions section"
+      className="w-full max-w-2xl mx-auto  px-4 md:px-6 py-24 bg-transparent bg-no-repeat"
+    >
+      <h3 className="text-white pb-4 md:text-xl text-lg">
+        Frequently asked questions.
+      </h3>
 
       {faqData.map((item, index) => (
         <Item

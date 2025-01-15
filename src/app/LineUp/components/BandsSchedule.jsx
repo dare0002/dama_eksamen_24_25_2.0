@@ -7,12 +7,8 @@ const BandsSchedule = ({ schedule }) => {
 
   useEffect(() => {
     const loadBands = async () => {
-      try {
-        const bandData = await fetchBands();
-        setBands(bandData);
-      } catch (error) {
-        console.error("Error loading bands:", error);
-      }
+      const bandData = await fetchBands();
+      setBands(bandData);
     };
 
     loadBands();

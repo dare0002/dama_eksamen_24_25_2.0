@@ -13,7 +13,7 @@ const IndexBoxes = () => {
           src="/ticketimg.svg"
           width={300}
           height={300}
-          alt="poster for graphic element for lineup"
+          alt="graphic element for tickets"
         />
         <Link href="/Tickets">
           <motion.div
@@ -38,7 +38,7 @@ const IndexBoxes = () => {
           src="/posterimg.svg"
           width={300}
           height={300}
-          alt="poster for graphic element for lineup"
+          alt="graphic element for lineup"
         />
         <Link href="/LineUp">
           <motion.div

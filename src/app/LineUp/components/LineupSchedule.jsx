@@ -26,34 +26,3 @@ const Lineupschedule = ({ scheduleData, selectedDay }) => {
 };
 
 export default Lineupschedule;
-
-// import SceneSchedule from "./SceneSchedule";
-
-// const Lineupschedule = async () => {
-//   const response = await fetch(
-//     "https://kindly-elegant-fork.glitch.me/schedule"
-//   );
-//   const scheduleData = await response.json();
-
-//   const getScheduleForAllDays = (sceneData) => {
-//     const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-//     return daysOfWeek.map((day) => {
-//       const bands =
-//         sceneData?.[day]?.filter((band) => band.act !== "break") || [];
-//       return { day, bands };
-//     });
-//   };
-
-//   const midgardSchedule = getScheduleForAllDays(scheduleData.Midgard);
-//   const vanaheimSchedule = getScheduleForAllDays(scheduleData.Vanaheim);
-//   const jotunheimSchedule = getScheduleForAllDays(scheduleData.Jotunheim);
-
-//   return (
-//     <div className="flex flex-col gap-y-6">
-//       <SceneSchedule sceneSchedule={midgardSchedule} scene="Midgard" />
-//       <SceneSchedule sceneSchedule={vanaheimSchedule} scene="Vanaheim" />
-//       <SceneSchedule sceneSchedule={jotunheimSchedule} scene="Jotunheim" />
-//     </div>
-//   );
-// };
-// export default Lineupschedule;

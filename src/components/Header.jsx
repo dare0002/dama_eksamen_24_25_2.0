@@ -14,6 +14,7 @@ const Header = () => {
       <nav className="bg-black flex items-end">
         <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>
           <motion.button
+            aria-label="Menu button"
             initial={false}
             onClick={() => setActive((prev) => !prev)}
             className="relative  h-20 w-20"

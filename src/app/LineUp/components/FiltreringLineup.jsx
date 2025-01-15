@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const FiltreringLineup = ({ onDayChange }) => {
   const handleDayChange = (event) => {
     onDayChange(event.target.value);

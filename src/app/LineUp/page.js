@@ -1,4 +1,4 @@
-"use client"; // Make this component client-side
+"use client";
 import { useState, useEffect } from "react";
 import FiltreringLineup from "./components/FiltreringLineup";
 import Lineupschedule from "./components/LineupSchedule";
@@ -11,13 +11,9 @@ const Lineup = () => {
 
   useEffect(() => {
     const loadSchedule = async () => {
-      try {
-        const data = await fetchSchedule();
-        setScheduleData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error loading schedule:", error);
-      }
+      const data = await fetchSchedule();
+      setScheduleData(data);
+      setLoading(false);
     };
 
     loadSchedule();
@@ -28,7 +24,11 @@ const Lineup = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center text-lg my-6">
+        Loading Line Up Schedule...
+      </div>
+    );
   }
 
   return (

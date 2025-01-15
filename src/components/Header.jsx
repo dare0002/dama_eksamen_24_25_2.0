@@ -87,6 +87,11 @@ const Header = () => {
             </li>
             <li>
               <Link href="/LineUp" onClick={() => setActive(false)}>
+                Schedule.
+              </Link>
+            </li>
+            <li>
+              <Link href="/LineUpnew" onClick={() => setActive(false)}>
                 Line Up.
               </Link>
             </li>

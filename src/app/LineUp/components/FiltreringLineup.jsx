@@ -7,7 +7,7 @@ const FiltreringLineup = ({ onDayChange }) => {
 
   return (
     <>
-      <p className="italic">
+      <p className="italic md:mb-8 mb-4">
         To see the lineup for a specific day, choose a day in the dropdown below
       </p>
       <label className=" border border-offwhite p-1 text-offwhite cursor-pointer">

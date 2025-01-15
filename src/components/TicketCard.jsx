@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const TicketCard = ({ ticketImg, Color, displayed }) => {
   return (
-    <div className=" text-center relative flex place-content-center">
+    <div className="text-center relative flex place-content-center">
       <Image
         src={ticketImg}
         width={600}

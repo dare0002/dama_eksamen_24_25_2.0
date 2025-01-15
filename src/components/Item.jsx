@@ -1,13 +1,14 @@
 "use client";
-import { motion, MotionConfig } from "motion/react";
+import { motion, MotionConfig, AnimatePresence } from "motion/react";
 
 const Item = ({ isOpen, setIsOpen, item, question, answer }) => {
   return (
-    <div className="py-4 px-12 border">
-      <header className=" flex place-items-center place-content-between">
-        <span className="text-offwhite">{question}</span>
+    <div className="py-4 px-12 border bg-pink">
+      <header className="text-base text-bold flex place-items-center place-content-between">
+        <span className="text-offwhite font-bold pb-2">{question}</span>
 
         <MotionConfig transition={{ duration: 0.5, ease: "easeInOut" }}>
+
           <motion.button
             initial={false}
             onClick={() => (isOpen === item ? setIsOpen(0) : setIsOpen(item))}
@@ -43,17 +44,19 @@ const Item = ({ isOpen, setIsOpen, item, question, answer }) => {
           </motion.button>
         </MotionConfig>
       </header>
-      {isOpen === item && (
-        <motion.section
-          className="text-sm text-offwhite"
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <p className="pb-3">{answer}</p>
-        </motion.section>
-      )}
+      <AnimatePresence initial={false}>
+        {isOpen === item && (
+          <motion.section
+            className="text-sm text-offwhite"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0}}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <p className="pb-3">{answer}</p>
+          </motion.section>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

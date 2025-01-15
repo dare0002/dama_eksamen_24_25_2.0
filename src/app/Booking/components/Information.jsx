@@ -66,9 +66,9 @@ function Information() {
 
   // Handle form submission
   const handleSubmit = (e) => {
-    validateForm(); // Ensure the form is validated before submission
+    validateForm(); 
     if (!isFormValid) {
-      e.preventDefault(); // Prevent form submission if invalid
+      e.preventDefault(); 
       alert("Please fix the errors before submitting the form.");
     }
   };
@@ -78,11 +78,11 @@ function Information() {
       <form
         action={formAction}
         noValidate
-        onSubmit={handleSubmit} // Attach the handler here
+        onSubmit={handleSubmit} 
         className="max-w-2xl mx-auto p-6 bg-offwhite rounded-lg shadow-md"
       >
         <fieldset className="border-0 p-0 my-8 text-left">
-          <legend className="text-xl font-semibold mb-4 text-gray-800">
+          <legend className="text-base font-semibold mb-4 text-gray-800">
             Personal information
           </legend>
 
@@ -137,9 +137,8 @@ function Information() {
           </div>
         </fieldset>
 
-        {/* Address fields */}
         <fieldset className="border-0 p-0 my-8 text-left">
-          <legend className="text-xl font-semibold mb-4">
+          <legend className="text-base font-semibold mb-4">
             What is your address?
           </legend>
 

@@ -41,7 +41,7 @@ const Camping = ({
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-offwhite rounded-lg shadow-md">
-      <h3 className="text-2xl font-semibold mb-6"> Camping Spots</h3>
+      <h3 className="text-base mb-6"> Camping Spots</h3>
 
       <ul className="mb-6 space-y-2">
         {campingData.length > 0
@@ -67,7 +67,7 @@ const Camping = ({
       </ul>
 
       <div className="mb-6">
-        <h4 className="text-lg font-semibold text-gray-800 mb-4">
+        <h4 className="text-base text-gray-800 mb-4">
           Select Area
         </h4>
         <div className="space-y-2">
@@ -79,7 +79,7 @@ const Camping = ({
                 key={index}
                 className={`flex items-center p-3 border rounded-lg cursor-pointer ${
                   selectedArea === spot.area
-                    ? "bg-blue-100 border-blue-500"
+                    ? "bg-gray border-pink"
                     : "bg-gray-50 border-gray-300"
                 }`}
               >
@@ -103,7 +103,7 @@ const Camping = ({
           setIsOpen={setIsOpen}
           handleReservation={handleReservation}
           selectedArea={selectedArea}
-          className="w-full py-2 px-4 bg-blue-500 text-offwhite font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full py-2 px-4 text-offwhite font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-pink"
         >
           <h4>Reserve spot</h4>
         </ButtonReserveCam>

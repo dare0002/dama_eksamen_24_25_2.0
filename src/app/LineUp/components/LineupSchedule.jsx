@@ -17,8 +17,8 @@ const Lineupschedule = ({ scheduleData, selectedDay }) => {
   const jotunheimSchedule = getScheduleForSelectedDay(scheduleData.Jotunheim);
 
   return (
-    <div className="flex flex-col gap-y-6 lg:w-3/4 mt-12 mb-24">
-      <SceneSchedule sceneSchedule={midgardSchedule} scene="Midgard" />
+    <div className="flex flex-col gap-y-6 lg:w-3/4 mt-12 mb-24 text-offwhite">
+      <SceneSchedule sceneSchedule={midgardSchedule} scene="Midgard" className="text-orange"/>
       <SceneSchedule sceneSchedule={vanaheimSchedule} scene="Vanaheim" />
       <SceneSchedule sceneSchedule={jotunheimSchedule} scene="Jotunheim" />
     </div>

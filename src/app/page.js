@@ -14,13 +14,13 @@ export default function Home() {
           <HeroIndex />
         </div>
         <IndexBoxes />
-        <FAQ />
-        <div className="p-4 flex justify-center text-3xl md:mb-10">
+        {/* <FAQ /> */}
+        <div className="p-4 flex justify-center text-3xl md:mb-8 md:mt-14">
           <Link href="/Tickets">
             <Button background={true}>Tickets.</Button>
           </Link>
         </div>
-        <div className="flex flex-col place-content-center sm:grid  grid-cols-1 md:grid-cols-2 w-full max-w-3xl mx-auto px-4 py-12 justify-center items-center md:gap-6">
+        <div className="flex flex-col place-content-center sm:grid grid-cols-1 md:grid-cols-2 w-full max-w-4xl mx-auto px-4 py-12 justify-center items-center gap-2">
           <TicketCard
             bgColor="bg-pink"
             displayed="block"

@@ -94,6 +94,11 @@ const Header = () => {
                 Tickets.
               </Link>
             </li>
+            <li>
+              <Link href="/About" onClick={() => setActive(false)}>
+                Info.
+              </Link>
+            </li>
           </ul>
         )}
       </nav>

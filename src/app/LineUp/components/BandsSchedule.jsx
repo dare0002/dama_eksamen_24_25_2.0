@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchBands } from "@/utils/fetchData";
+import { motion } from "motion/react";
 
 const BandsSchedule = ({ schedule }) => {
   const [bands, setBands] = useState([]);
@@ -28,9 +29,13 @@ const BandsSchedule = ({ schedule }) => {
         const band = bands.find((b) => b.name === scene.act);
 
         return (
-          <li key={scene.act} className={index < 3 ? "font-bold text-2xl" : ""}>
+           <motion.li
+           key={scene.act} className={index < 3 ? "font-bold text-2xl hover:text-pink" : ""}
+          initial={{ scale: 1}}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.4 }} >
             <Link href={`/Artist/${band ? band.slug : ""}`}>{scene.act}</Link>
-          </li>
+          </motion.li>
         );
       })}
     </ul>

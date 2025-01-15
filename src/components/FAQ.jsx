@@ -25,8 +25,9 @@ const Accordion = () => {
   ];
 
   return (
-    <section className="w-full max-w-2xl mx-auto  px-4 md:px-6 py-24 bg-transparent bg-no-repeat">
+    <section className="w-full max-w-2xl mx-auto px-4 md:px-6 md:py-10 py-10 bg-transparent bg-no-repeat">
       <h3 className="text-white pb-4 md:text-xl text-lg">FAQ.</h3>
+      <p className="md:pb-6 pb-6">In our freaquently asked questions you can find questions and answers related to the festival. </p>
 
       {faqData.map((item, index) => (
         <Item

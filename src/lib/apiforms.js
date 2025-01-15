@@ -34,7 +34,7 @@ export async function postData(data) {
 
 export async function getAvailableSpots() {
   try {
-    const response = await axios.get("http://localhost:8080/available-spots");
+    const response = await axios.get("https://kindly-elegant-fork.glitch.me/available-spots");
     const data = response.data;
 
     const spots = Object.keys(data).map((area) => ({
@@ -52,7 +52,7 @@ export async function getAvailableSpots() {
 
 export async function reserveSpot(area, amount) {
   try {
-    const response = await axios.put("http://localhost:8080/reserve-spot", {
+    const response = await axios.put("https://kindly-elegant-fork.glitch.me/reserve-spots", {
       area,
       amount,
     });
@@ -71,7 +71,7 @@ export async function reserveSpot(area, amount) {
 export async function fulfillReservation(id) {
   try {
     const response = await axios.post(
-      "http://localhost:8080/fullfill-reservation",
+      "https://kindly-elegant-fork.glitch.me/fullfill-reservation",
       id,
       {}
     );
